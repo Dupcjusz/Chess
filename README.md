@@ -21,7 +21,7 @@ Project is created with:
 ## Usage
 If you want play thats chess game, you can do it at two ways:
 
-1. Play on Itch.io [link will be added soon :)]
+1. Play on Itch.io [link will be added soon :)](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 2. Clone repository on your computer and open project in Unity.
 
