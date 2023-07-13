@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 
-public class Bishops_white : MonoBehaviour
+public class Bishops_white : Board_manager
 {
     private GameObject bishop_C1;
     private GameObject bishop_F1;
@@ -18,7 +18,7 @@ public class Bishops_white : MonoBehaviour
     }
 
     void Start(){
-        bishop_C1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        bishop_F1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        bishop_C1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        bishop_F1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
     }
 }

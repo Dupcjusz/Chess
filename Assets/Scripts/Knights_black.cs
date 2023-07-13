@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 
-public class Knights_black : MonoBehaviour
+public class Knights_black : Board_manager
 {
     private GameObject knight_B8;
     private GameObject knight_G8;
@@ -18,7 +18,7 @@ public class Knights_black : MonoBehaviour
     }
 
     void Start(){
-        knight_B8.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        knight_G8.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        knight_B8.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        knight_G8.GetComponent<RectTransform>().anchoredPosition = defaultPos;
     }
 }

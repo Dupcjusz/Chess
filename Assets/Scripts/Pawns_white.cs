@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 
-public class Pawns_white : MonoBehaviour
+public class Pawns_white : Board_manager
 {
     private GameObject pawn_A2;
     private GameObject pawn_B2;
@@ -27,17 +27,10 @@ public class Pawns_white : MonoBehaviour
         pawn_F2 = GameObject.Find("Canvas/Board/Pieces_white/PawnF2");
         pawn_G2 = GameObject.Find("Canvas/Board/Pieces_white/PawnG2");
         pawn_H2 = GameObject.Find("Canvas/Board/Pieces_white/PawnH2");
+        Setup();
     }
 
-    void Start()
-    {
-        pawn_A2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_B2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_C2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_D2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_E2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_F2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_G2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_H2.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+    void Start(){
+        
     }
 }

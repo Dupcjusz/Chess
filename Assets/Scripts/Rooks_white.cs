@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 
-public class Rooks_white : MonoBehaviour
+public class Rooks_white : Board_manager
 {
     private GameObject rook_A1;
     private GameObject rook_H1;
@@ -18,7 +18,7 @@ public class Rooks_white : MonoBehaviour
     }
 
     void Start(){
-        rook_A1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        rook_H1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        rook_A1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        rook_H1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
     }
 }

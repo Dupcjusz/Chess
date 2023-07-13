@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 
-public class Queen_black : MonoBehaviour
+public class Queen_black : Board_manager
 {
     private GameObject queen_D8;
 
@@ -16,6 +16,6 @@ public class Queen_black : MonoBehaviour
     }
 
     void Start(){
-        queen_D8.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        queen_D8.GetComponent<RectTransform>().anchoredPosition = defaultPos;
     }
 }

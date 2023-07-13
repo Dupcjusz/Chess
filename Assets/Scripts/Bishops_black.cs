@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 
-public class Bishops_black : MonoBehaviour
+public class Bishops_black : Board_manager
 {
     private GameObject bishop_C8;
     private GameObject bishop_F8;
@@ -19,7 +19,7 @@ public class Bishops_black : MonoBehaviour
 
     void Start()
     {
-        bishop_C8.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        bishop_F8.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        bishop_C8.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        bishop_F8.GetComponent<RectTransform>().anchoredPosition = defaultPos;
     }
 }

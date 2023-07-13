@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 
-public class Pawns_black : MonoBehaviour
+public class Pawns_black : Board_manager
 {
     private GameObject pawn_A7;
     private GameObject pawn_B7;
@@ -30,13 +30,13 @@ public class Pawns_black : MonoBehaviour
     }
 
     void Start(){
-        pawn_A7.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_B7.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_C7.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_D7.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_E7.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_F7.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_G7.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        pawn_H7.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        pawn_A7.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        pawn_B7.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        pawn_C7.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        pawn_D7.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        pawn_E7.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        pawn_F7.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        pawn_G7.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        pawn_H7.GetComponent<RectTransform>().anchoredPosition = defaultPos;
     }
 }

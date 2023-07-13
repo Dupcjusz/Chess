@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.IO;
 using TMPro;
 
-public class King_white : MonoBehaviour
+public class King_white : Board_manager
 {
     private GameObject king_E1;
 
@@ -16,6 +16,6 @@ public class King_white : MonoBehaviour
     }
 
     void Start(){
-        king_E1.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        king_E1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
     }
 }
