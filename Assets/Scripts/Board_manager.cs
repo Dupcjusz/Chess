@@ -9,12 +9,14 @@ using TMPro;
 
 public class Board_manager : MonoBehaviour
 {
-    private int i, n, j = 0;
+    private int i, n, j;
     private string clickedField;
-    private bool wasClicked = true;
-    protected string[] piecesInfo = new string[64];
-    private string[] boardFieldsInfo = new string[64];
-    private string[] piecesName = new string[12];
+    private string clickedPiece;
+    private int clickedPos;
+    private bool wasClicked = false, alrClicked = false, firstMove = true;
+    protected string[] piecesInfo = new string[64]; //what is on field
+    private string[] boardFieldsInfo = new string[64]; //name of the fields
+    private string[] piecesName = new string[12]; //pieces name
     protected Image[] boardFields;
     private GameObject fieldsParent;
     public Sprite[] pieceImgWhite = new Sprite[12];
@@ -190,11 +192,12 @@ public class Board_manager : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("chuj");
         if(Input.GetMouseButtonDown(0)){
-            wasClicked = true;
-            Debug.Log("Pressed left click, casting ray");
-            CastRay();
+            if(!wasClicked){
+                wasClicked = true;
+                Debug.Log("Pressed left click, casting ray");
+                CastRay();
+            }
         }   
     }
 
@@ -203,7 +206,7 @@ public class Board_manager : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast (ray.origin, ray.direction, Mathf.Infinity);
         if(hit){
             clickedField = hit.collider.gameObject.name;
-            CheckingClickedField();
+            CheckingClickedField(); /////JAK SIE KLIKNIE NA OBRAMUWKE TO NIE DZIALA
         }
     }
 
@@ -221,17 +224,77 @@ public class Board_manager : MonoBehaviour
         for(i = 0; i < 64; i++){
             if(clickedField == boardFieldsInfo[i]){
                 if(piecesInfo[i] == ""){
+                    if(alrClicked){
+                        CancelMoving();
+                    }
                     Debug.Log("Empty field!");
+                    wasClicked = false;
+                    break;
                 }else{
                     for(n = 0, j = 0; n < 12; n++, j++){
-                        if(piecesInfo[i].Contains(piecesName[j])){
+                        if(piecesInfo[i] == "MoveOptionA"){
+                            boardFields[clickedPos].sprite = pieceImgWhite[11];
+                            boardFields[clickedPos + 8].sprite = pieceImgWhite[5];
+                            piecesInfo[clickedPos] = "";
+                            piecesInfo[clickedPos + 8] = clickedPiece;
+                            if(firstMove){
+                                boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                piecesInfo[clickedPos + 16] = "";
+                                firstMove = false;
+                            }
+                            Debug.Log(piecesInfo[clickedPos]); 
+                            Debug.Log(piecesInfo[clickedPos + 8]); 
+                            alrClicked = false;
+                            wasClicked = false;
+                            firstMove = false;
+                            break;
+                        }else if(piecesInfo[i] == "MoveOptionB"){
+                            boardFields[clickedPos].sprite = pieceImgWhite[11];
+                            boardFields[clickedPos + 8].sprite = pieceImgWhite[11];
+                            boardFields[clickedPos + 16].sprite = pieceImgWhite[5];
+                            piecesInfo[clickedPos] = "";
+                            piecesInfo[clickedPos + 8] = "";
+                            piecesInfo[clickedPos + 16] = clickedPiece;
+                            alrClicked = false;
+                            wasClicked = false;
+                            firstMove = false;
+                            break;
+                        }else if(piecesInfo[i].Contains(piecesName[j])){
+                            if(alrClicked){
+                                CancelMoving();
+                            }       
+                            clickedPos = i;
+                            clickedPiece = piecesName[j];
                             Debug.Log(piecesName[j]);
+                            MovingPieces();
+                            alrClicked = true;
+                            wasClicked = false;
                             break;
                         }
                     }
-                    break;
                 }
             }
+        }
+    }
+
+    protected void MovingPieces(){
+        if(clickedPiece == "pawn_white"){
+            boardFields[clickedPos + 8].sprite = circleBlack;
+            piecesInfo[clickedPos + 8] = "MoveOptionA";
+            if(firstMove){
+                boardFields[clickedPos + 16].sprite = circleBlack;
+                piecesInfo[clickedPos + 16] = "MoveOptionB";
+            }
+        }
+    }
+
+    protected void CancelMoving(){
+        if(clickedPiece == "pawn_white"){
+            boardFields[clickedPos + 8].sprite = pieceImgBlack[11];
+            boardFields[clickedPos + 16].sprite = pieceImgBlack[11];
+            piecesInfo[clickedPos + 8] = "";
+            piecesInfo[clickedPos + 16] = "";
+            alrClicked = false;
         }
     }
 }

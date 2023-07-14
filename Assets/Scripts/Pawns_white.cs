@@ -34,5 +34,4 @@ public class Pawns_white : Board_manager
     void Start(){
         
     }
-
 }
