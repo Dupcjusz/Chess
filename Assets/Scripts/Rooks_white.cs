@@ -9,16 +9,17 @@ using TMPro;
 
 public class Rooks_white : Board_manager
 {
-    private GameObject rook_A1;
-    private GameObject rook_H1;
+    private Image rook_A1;
+    private Image rook_H1;
 
     void Awake(){
-        rook_A1 = GameObject.Find("Canvas/Board/Pieces_white/RookA1");
-        rook_H1 = GameObject.Find("Canvas/Board/Pieces_white/RookH1");
+        Setup();
+
+        rook_A1 = boardFields[0];
+        rook_H1 = boardFields[7];
     }
 
     void Start(){
-        rook_A1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
-        rook_H1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        
     }
 }

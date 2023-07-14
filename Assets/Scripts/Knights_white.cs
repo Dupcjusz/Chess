@@ -9,16 +9,17 @@ using TMPro;
 
 public class Knights_white : Board_manager
 {
-    private GameObject knight_B1;
-    private GameObject knight_G1;
+    private Image knight_B1;
+    private Image knight_G1;
 
     void Awake(){
-        knight_B1 = GameObject.Find("Canvas/Board/Pieces_white/KnightB1");
-        knight_G1 = GameObject.Find("Canvas/Board/Pieces_white/KnightG1");
+        Setup();
+
+        knight_B1 = boardFields[1];
+        knight_G1 = boardFields[6];
     }
 
     void Start(){
-        knight_B1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
-        knight_G1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        
     }
 }

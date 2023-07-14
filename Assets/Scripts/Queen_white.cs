@@ -9,13 +9,15 @@ using TMPro;
 
 public class Queen_white : Board_manager
 {
-    private GameObject queen_D1;
+    private Image queen_D1;
 
     void Awake(){
-        queen_D1 = GameObject.Find("Canvas/Board/Pieces_white/QueenD1");
+        Setup();
+
+        queen_D1 = boardFields[3];
     }
 
     void Start(){
-        queen_D1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+        
     }
 }

@@ -9,16 +9,17 @@ using TMPro;
 
 public class Bishops_white : Board_manager
 {
-    private GameObject bishop_C1;
-    private GameObject bishop_F1;
+    private Image bishop_C1;
+    private Image bishop_F1;
 
     void Awake(){
-        bishop_C1 = GameObject.Find("Canvas/Board/Pieces_white/BishopC1");
-        bishop_F1 = GameObject.Find("Canvas/Board/Pieces_white/BishopF1");
+        Setup();
+
+        bishop_C1 = boardFields[2];
+        bishop_F1 = boardFields[5];
     }
 
     void Start(){
-        bishop_C1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
-        bishop_F1.GetComponent<RectTransform>().anchoredPosition = defaultPos;
+
     }
 }
