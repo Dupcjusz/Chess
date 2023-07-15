@@ -9,11 +9,12 @@ using TMPro;
 
 public class Board_manager : MonoBehaviour
 {
-    private int i, n, j;
+    private int i, n, j, l;
     private string clickedField;
     private string clickedPiece;
     private int clickedPos;
-    private bool wasClicked = false, alrClicked = false, firstMove = true;
+    private bool wasClicked = false, alrClicked = false;
+    private bool[] firstMove = new bool[16];
     protected string[] piecesInfo = new string[64]; //what is on field
     private string[] boardFieldsInfo = new string[64]; //name of the fields
     private string[] piecesName = new string[12]; //pieces name
@@ -187,6 +188,10 @@ public class Board_manager : MonoBehaviour
     piecesName[9] = "queen_black";
     piecesName[10] = "king_black";
     piecesName[11] = "pawn_black";
+
+    for(i = 0; i < 16; i++){
+        firstMove[i] = true;
+    }
 //
     }
 
@@ -206,7 +211,9 @@ public class Board_manager : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast (ray.origin, ray.direction, Mathf.Infinity);
         if(hit){
             clickedField = hit.collider.gameObject.name;
-            CheckingClickedField(); /////JAK SIE KLIKNIE NA OBRAMUWKE TO NIE DZIALA
+            CheckingClickedField();    
+        }else{
+            wasClicked = false;
         }
     }
 
@@ -233,31 +240,492 @@ public class Board_manager : MonoBehaviour
                 }else{
                     for(n = 0, j = 0; n < 12; n++, j++){
                         if(piecesInfo[i] == "MoveOptionA"){
-                            boardFields[clickedPos].sprite = pieceImgWhite[11];
-                            boardFields[clickedPos + 8].sprite = pieceImgWhite[5];
-                            piecesInfo[clickedPos] = "";
-                            piecesInfo[clickedPos + 8] = clickedPiece;
-                            if(firstMove){
-                                boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-                                piecesInfo[clickedPos + 16] = "";
-                                firstMove = false;
+                            if(clickedPiece == "pawn_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                boardFields[clickedPos + 8].sprite = pieceImgWhite[5];
+                                if(piecesInfo[clickedPos] == "pawn_whiteA2"){
+                                    if(firstMove[0]){
+                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 16] = "";
+                                        firstMove[0] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_whiteB2"){
+                                    if(firstMove[1]){
+                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 16] = "";
+                                        firstMove[1] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_whiteC2"){
+                                    if(firstMove[2]){
+                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 16] = "";
+                                        firstMove[2] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_whiteD2"){
+                                    if(firstMove[3]){
+                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 16] = "";
+                                        firstMove[3] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_whiteE2"){
+                                    if(firstMove[4]){
+                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 16] = "";
+                                        firstMove[4] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_whiteF2"){
+                                    if(firstMove[5]){
+                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 16] = "";
+                                        firstMove[5] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_whiteG2"){
+                                    if(firstMove[6]){
+                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 16] = "";
+                                        firstMove[6] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_whiteH2"){
+                                    if(firstMove[7]){
+                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 16] = "";
+                                        firstMove[7] = false;
+                                    }   
+                                }
+                                piecesInfo[clickedPos] = "";
+                                piecesInfo[clickedPos + 8] = clickedPiece;
+                            }else if(clickedPiece == "knight_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                piecesInfo[clickedPos] = "";
+                                boardFields[clickedPos + 6].sprite = pieceImgWhite[1];
+                                piecesInfo[clickedPos + 6] = clickedPiece;
+                                if(clickedPos + 15 < 64 && clickedPos + 15 > 0){
+                                    if(piecesInfo[clickedPos + 15] == "MoveOptionB"){
+                                        boardFields[clickedPos + 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 15] = "";
+                                    }
+                                }
+                                if(clickedPos + 17 < 64 && clickedPos + 17 > 0){
+                                    if(piecesInfo[clickedPos + 17] == "MoveOptionC"){
+                                        boardFields[clickedPos + 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 17] = "";
+                                    }
+                                }
+                                if(piecesInfo[clickedPos + 10] == "MoveOptionD"){
+                                    boardFields[clickedPos + 10].sprite = pieceImgWhite[11];
+                                    piecesInfo[clickedPos + 10] = "";
+                                }
+                                if(clickedPos - 6 < 64 && clickedPos - 6 > 0){
+                                    if(piecesInfo[clickedPos - 6] == "MoveOptionE"){
+                                        boardFields[clickedPos - 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 6] = "";
+                                    }
+                                }
+                                if(clickedPos - 15 < 64 && clickedPos - 15 > 0){
+                                    if(piecesInfo[clickedPos - 15] == "MoveOptionF"){
+                                        boardFields[clickedPos - 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 15] = "";
+                                    }
+                                }
+                                if(clickedPos - 17 < 64 && clickedPos - 17 > 0){
+                                    if(piecesInfo[clickedPos - 17] == "MoveOptionG"){
+                                        boardFields[clickedPos - 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 17] = "";
+                                    }
+                                }
+                                if(clickedPos - 10 < 64 && clickedPos - 10 > 0){
+                                    if(piecesInfo[clickedPos - 10] == "MoveOptionH"){
+                                        boardFields[clickedPos - 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 10] = "";
+                                    }
+                                }
                             }
-                            Debug.Log(piecesInfo[clickedPos]); 
-                            Debug.Log(piecesInfo[clickedPos + 8]); 
                             alrClicked = false;
                             wasClicked = false;
-                            firstMove = false;
                             break;
                         }else if(piecesInfo[i] == "MoveOptionB"){
-                            boardFields[clickedPos].sprite = pieceImgWhite[11];
-                            boardFields[clickedPos + 8].sprite = pieceImgWhite[11];
-                            boardFields[clickedPos + 16].sprite = pieceImgWhite[5];
-                            piecesInfo[clickedPos] = "";
-                            piecesInfo[clickedPos + 8] = "";
-                            piecesInfo[clickedPos + 16] = clickedPiece;
+                            if(clickedPiece == "pawn_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                boardFields[clickedPos + 8].sprite = pieceImgWhite[11];
+                                boardFields[clickedPos + 16].sprite = pieceImgWhite[5];
+                                piecesInfo[clickedPos] = "";
+                                piecesInfo[clickedPos + 8] = "";
+                                piecesInfo[clickedPos + 16] = clickedPiece;
+                            }else if(clickedPiece == "knight_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                piecesInfo[clickedPos] = "";
+                                boardFields[clickedPos + 15].sprite = pieceImgWhite[1];
+                                piecesInfo[clickedPos + 15] = clickedPiece;
+                                if(clickedPos + 6 < 64 && clickedPos + 6 > 0){
+                                    if(piecesInfo[clickedPos + 6] == "MoveOptionA"){
+                                        boardFields[clickedPos + 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 6] = "";
+                                    }
+                                }
+                                if(clickedPos + 17 < 64 && clickedPos + 17 > 0){
+                                    if(piecesInfo[clickedPos + 17] == "MoveOptionC"){
+                                        boardFields[clickedPos + 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 17] = "";
+                                    }
+                                }
+                                if(clickedPos + 10 < 64 && clickedPos + 10 > 0){
+                                    if(piecesInfo[clickedPos + 10] == "MoveOptionD"){
+                                        boardFields[clickedPos + 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 10] = "";
+                                    }
+                                }
+                                if(clickedPos - 6 < 64 && clickedPos - 6 > 0){
+                                    if(piecesInfo[clickedPos - 6] == "MoveOptionE"){
+                                        boardFields[clickedPos - 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 6] = "";
+                                    }
+                                }
+                                if(clickedPos - 15 < 64 && clickedPos - 15 > 0){
+                                    if(piecesInfo[clickedPos - 15] == "MoveOptionF"){
+                                        boardFields[clickedPos - 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 15] = "";
+                                    }
+                                }
+                                if(clickedPos - 17 < 64 && clickedPos - 17 > 0){
+                                    if(piecesInfo[clickedPos - 17] == "MoveOptionG"){
+                                        boardFields[clickedPos - 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 17] = "";
+                                    }
+                                }
+                                if(clickedPos - 10 < 64 && clickedPos - 10 > 0){
+                                    if(piecesInfo[clickedPos - 10] == "MoveOptionH"){
+                                        boardFields[clickedPos - 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 10] = "";
+                                    }
+                                }
+                            }
                             alrClicked = false;
                             wasClicked = false;
-                            firstMove = false;
+                            break;
+                        }
+                        else if(piecesInfo[i] == "MoveOptionC"){
+                            if(clickedPiece == "knight_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                piecesInfo[clickedPos] = "";
+                                boardFields[clickedPos + 17].sprite = pieceImgWhite[1];
+                                piecesInfo[clickedPos + 17] = clickedPiece;
+                                if(clickedPos + 6 < 64 && clickedPos + 6 > 0){
+                                    if(piecesInfo[clickedPos + 6] == "MoveOptionA"){
+                                        boardFields[clickedPos + 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 6] = "";
+                                    }
+                                }
+                                if(clickedPos + 15 < 64 && clickedPos + 15 > 0){
+                                    if(piecesInfo[clickedPos + 15] == "MoveOptionB"){
+                                        boardFields[clickedPos + 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 15] = "";
+                                    }
+                                }
+                                if(clickedPos + 10 < 64 && clickedPos + 10 > 0){
+                                    if(piecesInfo[clickedPos + 10] == "MoveOptionD"){
+                                        boardFields[clickedPos + 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 10] = "";
+                                    }
+                                }
+                                if(clickedPos - 6 < 64 && clickedPos - 6 > 0){
+                                    if(piecesInfo[clickedPos - 6] == "MoveOptionE"){
+                                        boardFields[clickedPos - 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 6] = "";
+                                    }
+                                }
+                                if(clickedPos - 15 < 64 && clickedPos - 15 > 0){
+                                    if(piecesInfo[clickedPos - 15] == "MoveOptionF"){
+                                        boardFields[clickedPos - 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 15] = "";
+                                    }
+                                }
+                                if(clickedPos - 17 < 64 && clickedPos - 17 > 0){
+                                    if(piecesInfo[clickedPos - 17] == "MoveOptionG"){
+                                        boardFields[clickedPos - 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 17] = "";
+                                    }
+                                }
+                                if(clickedPos - 10 < 64 && clickedPos - 10 > 0){
+                                    if(piecesInfo[clickedPos - 10] == "MoveOptionH"){
+                                        boardFields[clickedPos - 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 10] = "";
+                                    }
+                                }
+                            }
+                            alrClicked = false;
+                            wasClicked = false;
+                            break;
+                        }
+                        else if(piecesInfo[i] == "MoveOptionD"){
+                            if(clickedPiece == "knight_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                piecesInfo[clickedPos] = "";
+                                boardFields[clickedPos + 10].sprite = pieceImgWhite[1];
+                                piecesInfo[clickedPos + 10] = clickedPiece;
+                                if(clickedPos + 6 < 64 && clickedPos + 6 > 0){
+                                    if(piecesInfo[clickedPos + 6] == "MoveOptionA"){
+                                        boardFields[clickedPos + 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 6] = "";
+                                    }
+                                }
+                                if(clickedPos + 15 < 64 && clickedPos + 15 > 0){
+                                    if(piecesInfo[clickedPos + 15] == "MoveOptionB"){
+                                        boardFields[clickedPos + 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 15] = "";
+                                    }
+                                }
+                                if(clickedPos + 17 < 64 && clickedPos + 17 > 0){
+                                    if(piecesInfo[clickedPos + 17] == "MoveOptionC"){
+                                        boardFields[clickedPos + 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 17] = "";
+                                    }
+                                }
+                                if(clickedPos - 6 < 64 && clickedPos - 6 > 0){
+                                    if(piecesInfo[clickedPos - 6] == "MoveOptionE"){
+                                        boardFields[clickedPos - 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 6] = "";
+                                    }
+                                }
+                                if(clickedPos - 15 < 64 && clickedPos - 15 > 0){
+                                    if(piecesInfo[clickedPos - 15] == "MoveOptionF"){
+                                        boardFields[clickedPos - 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 15] = "";
+                                    }
+                                }
+                                if(clickedPos - 17 < 64 && clickedPos - 17 > 0){
+                                    if(piecesInfo[clickedPos - 17] == "MoveOptionG"){
+                                        boardFields[clickedPos - 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 17] = "";
+                                    }
+                                }
+                                if(clickedPos - 10 < 64 && clickedPos - 10 > 0){
+                                    if(piecesInfo[clickedPos - 10] == "MoveOptionH"){
+                                        boardFields[clickedPos - 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 10] = "";
+                                    }
+                                }
+                            }
+                            alrClicked = false;
+                            wasClicked = false;
+                            break;
+                        }
+                        else if(piecesInfo[i] == "MoveOptionE"){
+                            if(clickedPiece == "knight_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                piecesInfo[clickedPos] = "";
+                                boardFields[clickedPos - 6].sprite = pieceImgWhite[1];
+                                piecesInfo[clickedPos - 6] = clickedPiece;
+                                if(clickedPos + 6 < 64 && clickedPos + 6 > 0){
+                                    if(piecesInfo[clickedPos + 6] == "MoveOptionA"){
+                                        boardFields[clickedPos + 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 6] = "";
+                                    }
+                                }
+                                if(clickedPos + 15 < 64 && clickedPos + 15 > 0){
+                                    if(piecesInfo[clickedPos + 15] == "MoveOptionB"){
+                                        boardFields[clickedPos + 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 15] = "";
+                                    }
+                                }
+                                if(clickedPos + 17 < 64 && clickedPos + 17 > 0){
+                                    if(piecesInfo[clickedPos + 17] == "MoveOptionC"){
+                                        boardFields[clickedPos + 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 17] = "";
+                                    }
+                                }
+                                if(clickedPos + 10 < 64 && clickedPos + 10 > 0){
+                                    if(piecesInfo[clickedPos + 10] == "MoveOptionD"){
+                                        boardFields[clickedPos + 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 10] = "";
+                                    }
+                                }
+                                if(clickedPos - 15 < 64 && clickedPos - 15 > 0){
+                                    if(piecesInfo[clickedPos - 15] == "MoveOptionF"){
+                                        boardFields[clickedPos - 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 15] = "";
+                                    }
+                                }
+                                if(clickedPos - 17 < 64 && clickedPos - 17 > 0){
+                                    if(piecesInfo[clickedPos - 17] == "MoveOptionG"){
+                                        boardFields[clickedPos - 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 17] = "";
+                                    }
+                                }
+                                if(clickedPos - 10 < 64 && clickedPos - 10 > 0){
+                                    if(piecesInfo[clickedPos - 10] == "MoveOptionH"){
+                                        boardFields[clickedPos - 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 10] = "";
+                                    }
+                                }
+                            }
+                            alrClicked = false;
+                            wasClicked = false;
+                            break;
+                        }
+                        else if(piecesInfo[i] == "MoveOptionF"){
+                            if(clickedPiece == "knight_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                piecesInfo[clickedPos] = "";
+                                boardFields[clickedPos - 15].sprite = pieceImgWhite[1];
+                                piecesInfo[clickedPos - 15] = clickedPiece;
+                                if(clickedPos + 6 < 64 && clickedPos + 6 > 0){
+                                    if(piecesInfo[clickedPos + 6] == "MoveOptionA"){
+                                        boardFields[clickedPos + 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 6] = "";
+                                    }
+                                }
+                                if(clickedPos + 15 < 64 && clickedPos + 15 > 0){
+                                    if(piecesInfo[clickedPos + 15] == "MoveOptionB"){
+                                        boardFields[clickedPos + 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 15] = "";
+                                    }
+                                }
+                                if(clickedPos + 17 < 64 && clickedPos + 17 > 0){
+                                    if(piecesInfo[clickedPos + 17] == "MoveOptionC"){
+                                        boardFields[clickedPos + 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 17] = "";
+                                    }
+                                }
+                                if(clickedPos + 10 < 64 && clickedPos + 10 > 0){
+                                    if(piecesInfo[clickedPos + 10] == "MoveOptionD"){
+                                        boardFields[clickedPos + 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 10] = "";
+                                    }
+                                }
+                                if(clickedPos - 6 < 64 && clickedPos - 6 > 0){
+                                    if(piecesInfo[clickedPos - 6] == "MoveOptionE"){
+                                        boardFields[clickedPos - 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 6] = "";
+                                    }
+                                }
+                                if(clickedPos - 17 < 64 && clickedPos - 17 > 0){
+                                    if(piecesInfo[clickedPos - 17] == "MoveOptionG"){
+                                        boardFields[clickedPos - 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 17] = "";
+                                    }
+                                }
+                                if(clickedPos - 10 < 64 && clickedPos - 10 > 0){
+                                    if(piecesInfo[clickedPos - 10] == "MoveOptionH"){
+                                        boardFields[clickedPos - 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 10] = "";
+                                    }
+                                }
+                            }
+                            alrClicked = false;
+                            wasClicked = false;
+                            break;
+                        }
+                        else if(piecesInfo[i] == "MoveOptionG"){
+                            if(clickedPiece == "knight_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                piecesInfo[clickedPos] = "";
+                                boardFields[clickedPos - 17].sprite = pieceImgWhite[1];
+                                piecesInfo[clickedPos - 17] = clickedPiece;
+                                if(clickedPos + 6 < 64 && clickedPos + 6 > 0){
+                                    if(piecesInfo[clickedPos + 6] == "MoveOptionA"){
+                                        boardFields[clickedPos + 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 6] = "";
+                                    }
+                                }
+                                if(clickedPos + 15 < 64 && clickedPos + 15 > 0){
+                                    if(piecesInfo[clickedPos + 15] == "MoveOptionB"){
+                                        boardFields[clickedPos + 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 15] = "";
+                                    }
+                                }
+                                if(clickedPos + 17 < 64 && clickedPos + 17 > 0){
+                                    if(piecesInfo[clickedPos + 17] == "MoveOptionC"){
+                                        boardFields[clickedPos + 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 17] = "";
+                                    }
+                                }
+                                if(clickedPos + 10 < 64 && clickedPos + 10 > 0){
+                                    if(piecesInfo[clickedPos + 10] == "MoveOptionD"){
+                                        boardFields[clickedPos + 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 10] = "";
+                                    }
+                                }
+                                if(clickedPos - 6 < 64 && clickedPos - 6 > 0){
+                                    if(piecesInfo[clickedPos - 6] == "MoveOptionE"){
+                                        boardFields[clickedPos - 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 6] = "";
+                                    }
+                                }
+                                if(clickedPos - 15 < 64 && clickedPos - 15 > 0){
+                                    if(piecesInfo[clickedPos - 15] == "MoveOptionF"){
+                                        boardFields[clickedPos - 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 15] = "";
+                                    }
+                                }
+                                if(clickedPos - 10 < 64 && clickedPos - 10 > 0){
+                                    if(piecesInfo[clickedPos - 10] == "MoveOptionH"){
+                                        boardFields[clickedPos - 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 10] = "";
+                                    }
+                                }
+                            }
+                            alrClicked = false;
+                            wasClicked = false;
+                            break;
+                        }
+                        else if(piecesInfo[i] == "MoveOptionH"){
+                            if(clickedPiece == "knight_white"){
+                                boardFields[clickedPos].sprite = pieceImgWhite[11];
+                                piecesInfo[clickedPos] = "";
+                                boardFields[clickedPos - 10].sprite = pieceImgWhite[1];
+                                piecesInfo[clickedPos - 10] = clickedPiece;
+                                if(clickedPos + 6 < 64 && clickedPos + 6 > 0){
+                                    if(piecesInfo[clickedPos + 6] == "MoveOptionA"){
+                                        boardFields[clickedPos + 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 6] = "";
+                                    }
+                                }
+                                if(clickedPos + 15 < 64 && clickedPos + 15 > 0){
+                                    if(piecesInfo[clickedPos + 15] == "MoveOptionB"){
+                                        boardFields[clickedPos + 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 15] = "";
+                                    }
+                                }
+                                if(clickedPos + 17 < 64 && clickedPos + 17 > 0){
+                                    if(piecesInfo[clickedPos + 17] == "MoveOptionC"){
+                                        boardFields[clickedPos + 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 17] = "";
+                                    }
+                                }
+                                if(clickedPos + 10 < 64 && clickedPos + 10 > 0){
+                                    if(piecesInfo[clickedPos + 10] == "MoveOptionD"){
+                                        boardFields[clickedPos + 10].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos + 10] = "";
+                                    }
+                                }
+                                if(clickedPos - 6 < 64 && clickedPos - 6 > 0){
+                                    if(piecesInfo[clickedPos - 6] == "MoveOptionE"){
+                                        boardFields[clickedPos - 6].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 6] = "";
+                                    }
+                                }
+                                if(clickedPos - 15 < 64 && clickedPos - 15 > 0){
+                                    if(piecesInfo[clickedPos - 15] == "MoveOptionF"){
+                                        boardFields[clickedPos - 15].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 15] = "";
+                                    }
+                                }
+                                if(clickedPos - 17 < 64 && clickedPos - 17 > 0){
+                                    if(piecesInfo[clickedPos - 17] == "MoveOptionG"){
+                                        boardFields[clickedPos - 17].sprite = pieceImgWhite[11];
+                                        piecesInfo[clickedPos - 17] = "";
+                                    }
+                                }
+                            }
+                            alrClicked = false;
+                            wasClicked = false;
                             break;
                         }else if(piecesInfo[i].Contains(piecesName[j])){
                             if(alrClicked){
@@ -265,8 +733,8 @@ public class Board_manager : MonoBehaviour
                             }       
                             clickedPos = i;
                             clickedPiece = piecesName[j];
-                            Debug.Log(piecesName[j]);
-                            MovingPieces();
+                            Debug.Log(clickedPiece);
+                            MovingPiecesWhite();
                             alrClicked = true;
                             wasClicked = false;
                             break;
@@ -277,24 +745,110 @@ public class Board_manager : MonoBehaviour
         }
     }
 
-    protected void MovingPieces(){
+    protected void MovingPiecesWhite(){
         if(clickedPiece == "pawn_white"){
             boardFields[clickedPos + 8].sprite = circleBlack;
             piecesInfo[clickedPos + 8] = "MoveOptionA";
-            if(firstMove){
+        ////firstmovepawnswhitecheck
+            if(piecesInfo[clickedPos] == "pawn_whiteA2" && firstMove[0]){
                 boardFields[clickedPos + 16].sprite = circleBlack;
                 piecesInfo[clickedPos + 16] = "MoveOptionB";
+            }
+            if(piecesInfo[clickedPos] == "pawn_whiteB2" && firstMove[1]){
+                boardFields[clickedPos + 16].sprite = circleBlack;
+                piecesInfo[clickedPos + 16] = "MoveOptionB";
+            }
+            if(piecesInfo[clickedPos] == "pawn_whiteC2" && firstMove[2]){
+                boardFields[clickedPos + 16].sprite = circleBlack;
+                piecesInfo[clickedPos + 16] = "MoveOptionB";
+            }
+            if(piecesInfo[clickedPos] == "pawn_whiteD2" && firstMove[3]){
+                boardFields[clickedPos + 16].sprite = circleBlack;
+                piecesInfo[clickedPos + 16] = "MoveOptionB";
+            }
+            if(piecesInfo[clickedPos] == "pawn_whiteE2" && firstMove[4]){
+                boardFields[clickedPos + 16].sprite = circleBlack;
+                piecesInfo[clickedPos + 16] = "MoveOptionB";
+            }
+            if(piecesInfo[clickedPos] == "pawn_whiteF2" && firstMove[5]){
+                boardFields[clickedPos + 16].sprite = circleBlack;
+                piecesInfo[clickedPos + 16] = "MoveOptionB";
+            }
+            if(piecesInfo[clickedPos] == "pawn_whiteG2" && firstMove[6]){
+                boardFields[clickedPos + 16].sprite = circleBlack;
+                piecesInfo[clickedPos + 16] = "MoveOptionB";
+            }
+            if(piecesInfo[clickedPos] == "pawn_whiteH2" && firstMove[7]){
+                boardFields[clickedPos + 16].sprite = circleBlack;
+                piecesInfo[clickedPos + 16] = "MoveOptionB";
+            }
+        //
+        }else if(clickedPiece == "knight_white"){
+            if(boardFields[clickedPos].tag != "A2"){
+                if(boardFields[clickedPos].tag != "A1"  && boardFields[clickedPos].tag != "B1"){
+                    if(piecesInfo[clickedPos + 6] == ""){
+                        boardFields[clickedPos + 6].sprite = circleBlack;
+                        piecesInfo[clickedPos + 6] = "MoveOptionA";
+                    }
+                }
+                if(piecesInfo[clickedPos + 15] == ""){
+                    boardFields[clickedPos + 15].sprite = circleBlack;
+                    piecesInfo[clickedPos + 15] = "MoveOptionB";
+                }
+            }
+            if(boardFields[clickedPos].tag != "H1"){
+                if(piecesInfo[clickedPos + 17] == ""){
+                    boardFields[clickedPos + 17].sprite = circleBlack;
+                    piecesInfo[clickedPos + 17] = "MoveOptionC";
+                }
+            }
+            if(boardFields[clickedPos].tag != "A1"  && boardFields[clickedPos].tag != "H1"  && boardFields[clickedPos].tag != "G1"){
+                if(boardFields[clickedPos].tag != "G2"){
+                    if(piecesInfo[clickedPos + 10] == ""){
+                        boardFields[clickedPos + 10].sprite = circleBlack;
+                        piecesInfo[clickedPos + 10] = "MoveOptionD";
+                    }
+                    if(boardFields[clickedPos].tag != "B1"  && boardFields[clickedPos].tag != "C1 - F1"){
+                        if(piecesInfo[clickedPos - 6] == ""){
+                            boardFields[clickedPos - 6].sprite = circleBlack;
+                            piecesInfo[clickedPos - 6] = "MoveOptionE";
+                        }
+                        if(boardFields[clickedPos].tag != "A2" && boardFields[clickedPos].tag != "B2" && boardFields[clickedPos].tag != "C2 - F2"){
+                           if(piecesInfo[clickedPos - 15] == ""){
+                                boardFields[clickedPos - 15].sprite = circleBlack;
+                               piecesInfo[clickedPos - 15] = "MoveOptionF";
+                            }
+                            if(piecesInfo[clickedPos - 17] == ""){
+                                boardFields[clickedPos - 17].sprite = circleBlack;
+                                piecesInfo[clickedPos - 17] = "MoveOptionG";
+                            }
+                        }
+                    }
+                }   
+                if(boardFields[clickedPos].tag != "B1" && boardFields[clickedPos].tag != "C1 - F1" && boardFields[clickedPos].tag != "A2" && boardFields[clickedPos].tag != "B2"){
+                    if(piecesInfo[clickedPos - 10] == ""){
+                        boardFields[clickedPos - 10].sprite = circleBlack;
+                        piecesInfo[clickedPos - 10] = "MoveOptionH";
+                    }
+                }
             }
         }
     }
 
     protected void CancelMoving(){
         if(clickedPiece == "pawn_white"){
-            boardFields[clickedPos + 8].sprite = pieceImgBlack[11];
-            boardFields[clickedPos + 16].sprite = pieceImgBlack[11];
+            boardFields[clickedPos + 8].sprite = pieceImgWhite[11];
+            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
             piecesInfo[clickedPos + 8] = "";
             piecesInfo[clickedPos + 16] = "";
+            alrClicked = false;
+        }else if(clickedPiece == "knight_white"){
+            boardFields[clickedPos + 15].sprite = pieceImgWhite[11];
+            boardFields[clickedPos + 17].sprite = pieceImgWhite[11];
+            piecesInfo[clickedPos + 15] = "";
+            piecesInfo[clickedPos + 17] = "";
             alrClicked = false;
         }
     }
 }
+///////////DODAC RUCH KONI NA BOKACH!!!

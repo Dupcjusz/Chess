@@ -3,7 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - A1
+  - B1
+  - G1
+  - H1
+  - C1 - F1
+  - A2
+  - B2
+  - G2
+  - H2
+  - C2 - F2
   layers:
   - Default
   - TransparentFX
