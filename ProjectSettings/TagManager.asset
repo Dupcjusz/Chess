@@ -14,6 +14,19 @@ TagManager:
   - G2
   - H2
   - C2 - F2
+  - A3 - A6
+  - B3 - B6
+  - H3 - H6
+  - G3 - G6
+  - A8
+  - B8
+  - G8
+  - H8
+  - C8 - F8
+  - A7
+  - B7
+  - G7
+  - H7
   layers:
   - Default
   - TransparentFX

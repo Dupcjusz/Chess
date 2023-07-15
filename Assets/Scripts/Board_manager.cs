@@ -27,16 +27,40 @@ public class Board_manager : MonoBehaviour
 
     void Awake(){
         Setup();
-        //boardFields = new Image[8, 8];
+    }
 
-        /*for(i = 0; i < 8; i++){
-            for(n = 0; n < 8; n++){
-                boardFields[i, n] = fieldsParent.GetComponentsInChildren<Image>()[i, n];
-                Debug.Log($"{boardFields[i, n]} = {i}, {n}");  
-            }      
-        }*/
+    protected void test(){
+        Debug.Log("agg");
+    }
+    void Update(){
+        if(Input.GetMouseButtonDown(0)){
+            if(!wasClicked){
+                wasClicked = true;
+                Debug.Log("Pressed left click, casting ray");
+                CastRay();
+            }
+        }   
+    }
 
-//
+    protected void CastRay(){
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast (ray.origin, ray.direction, Mathf.Infinity);
+        if(hit){
+            clickedField = hit.collider.gameObject.name;
+            CheckingClickedField();    
+        }else{
+            wasClicked = false;
+        }
+    }
+
+    protected void Setup(){
+        fieldsParent = GameObject.Find("Canvas/Board/Fields");
+        boardFields = new Image[fieldsParent.transform.childCount];
+
+        for(i = 0; i < fieldsParent.transform.childCount; i++){
+            boardFields[i] = fieldsParent.GetComponentsInChildren<Image>()[i];      
+        }
+
         piecesInfo[56] = "rook_blackA8";
         boardFields[56].sprite = pieceImgBlack[0];
         piecesInfo[63] = "rook_blackH8";
@@ -71,39 +95,39 @@ public class Board_manager : MonoBehaviour
         piecesInfo[4] = "king_whiteE1";
         boardFields[4].sprite = pieceImgWhite[4];
 
-            piecesInfo[48] = "pawn_blackA7";
-            boardFields[48].sprite = pieceImgBlack[5];
-            piecesInfo[49] = "pawn_blackB7";
-            boardFields[49].sprite = pieceImgBlack[5];
-            piecesInfo[50] = "pawn_blackC7";
-            boardFields[50].sprite = pieceImgBlack[5];
-            piecesInfo[51] = "pawn_blackD7";
-            boardFields[51].sprite = pieceImgBlack[5];
-            piecesInfo[52] = "pawn_blackE7";
-            boardFields[52].sprite = pieceImgBlack[5];
-            piecesInfo[53] = "pawn_blackF7";
-            boardFields[53].sprite = pieceImgBlack[5];
-            piecesInfo[54] = "pawn_blackG7";
-            boardFields[54].sprite = pieceImgBlack[5];
-            piecesInfo[55] = "pawn_blackH7";
-            boardFields[55].sprite = pieceImgBlack[5];
+        piecesInfo[48] = "pawn_blackA7";
+        boardFields[48].sprite = pieceImgBlack[5];
+        piecesInfo[49] = "pawn_blackB7";
+        boardFields[49].sprite = pieceImgBlack[5];
+        piecesInfo[50] = "pawn_blackC7";
+        boardFields[50].sprite = pieceImgBlack[5];
+        piecesInfo[51] = "pawn_blackD7";
+        boardFields[51].sprite = pieceImgBlack[5];
+        piecesInfo[52] = "pawn_blackE7";
+        boardFields[52].sprite = pieceImgBlack[5];
+        piecesInfo[53] = "pawn_blackF7";
+        boardFields[53].sprite = pieceImgBlack[5];
+        piecesInfo[54] = "pawn_blackG7";
+        boardFields[54].sprite = pieceImgBlack[5];
+        piecesInfo[55] = "pawn_blackH7";
+        boardFields[55].sprite = pieceImgBlack[5];
         
-            piecesInfo[8] = "pawn_whiteA2";
-            boardFields[8].sprite = pieceImgWhite[5];
-            piecesInfo[9] = "pawn_whiteB2";
-            boardFields[9].sprite = pieceImgWhite[5];
-            piecesInfo[10] = "pawn_whiteC2";
-            boardFields[10].sprite = pieceImgWhite[5];
-            piecesInfo[11] = "pawn_whiteD2";
-            boardFields[11].sprite = pieceImgWhite[5];
-            piecesInfo[12] = "pawn_whiteE2";
-            boardFields[12].sprite = pieceImgWhite[5];
-            piecesInfo[13] = "pawn_whiteF2";
-            boardFields[13].sprite = pieceImgWhite[5];
-            piecesInfo[14] = "pawn_whiteG2";
-            boardFields[14].sprite = pieceImgWhite[5];
-            piecesInfo[15] = "pawn_whiteH2";
-            boardFields[15].sprite = pieceImgWhite[5];
+        piecesInfo[8] = "pawn_whiteA2";
+        boardFields[8].sprite = pieceImgWhite[5];
+        piecesInfo[9] = "pawn_whiteB2";
+        boardFields[9].sprite = pieceImgWhite[5];
+        piecesInfo[10] = "pawn_whiteC2";
+        boardFields[10].sprite = pieceImgWhite[5];
+        piecesInfo[11] = "pawn_whiteD2";
+        boardFields[11].sprite = pieceImgWhite[5];
+        piecesInfo[12] = "pawn_whiteE2";
+        boardFields[12].sprite = pieceImgWhite[5];
+        piecesInfo[13] = "pawn_whiteF2";
+        boardFields[13].sprite = pieceImgWhite[5];
+        piecesInfo[14] = "pawn_whiteG2";
+        boardFields[14].sprite = pieceImgWhite[5];
+        piecesInfo[15] = "pawn_whiteH2";
+        boardFields[15].sprite = pieceImgWhite[5];
         
         for(i = 16; i <= 47; i++){
             piecesInfo[i] = "";
@@ -111,119 +135,86 @@ public class Board_manager : MonoBehaviour
         }    
  
 
-    boardFieldsInfo[0] = "A1";
-    boardFieldsInfo[1] = "B1";
-    boardFieldsInfo[2] = "C1";
-    boardFieldsInfo[3] = "D1";
-    boardFieldsInfo[4] = "E1";
-    boardFieldsInfo[5] = "F1";
-    boardFieldsInfo[6] = "G1";
-    boardFieldsInfo[7] = "H1";
-    boardFieldsInfo[8] = "A2";
-    boardFieldsInfo[9] = "B2";
-    boardFieldsInfo[10] = "C2";
-    boardFieldsInfo[11] = "D2";
-    boardFieldsInfo[12] = "E2";
-    boardFieldsInfo[13] = "F2";
-    boardFieldsInfo[14] = "G2";
-    boardFieldsInfo[15] = "H2";
-    boardFieldsInfo[16] = "A3";
-    boardFieldsInfo[17] = "B3";
-    boardFieldsInfo[18] = "C3";
-    boardFieldsInfo[19] = "D3";
-    boardFieldsInfo[20] = "E3";
-    boardFieldsInfo[21] = "F3";
-    boardFieldsInfo[22] = "G3";
-    boardFieldsInfo[23] = "H3";
-    boardFieldsInfo[24] = "A4";
-    boardFieldsInfo[25] = "B4";
-    boardFieldsInfo[26] = "C4";
-    boardFieldsInfo[27] = "D4";
-    boardFieldsInfo[28] = "E4";
-    boardFieldsInfo[29] = "F4";
-    boardFieldsInfo[30] = "G4";
-    boardFieldsInfo[31] = "H4";
-    boardFieldsInfo[32] = "A5";
-    boardFieldsInfo[33] = "B5";
-    boardFieldsInfo[34] = "C5";
-    boardFieldsInfo[35] = "D5";
-    boardFieldsInfo[36] = "E5";
-    boardFieldsInfo[37] = "F5";
-    boardFieldsInfo[38] = "G5";
-    boardFieldsInfo[39] = "H5";
-    boardFieldsInfo[40] = "A6";
-    boardFieldsInfo[41] = "B6";
-    boardFieldsInfo[42] = "C6";
-    boardFieldsInfo[43] = "D6";
-    boardFieldsInfo[44] = "E6";
-    boardFieldsInfo[45] = "F6";
-    boardFieldsInfo[46] = "G6";
-    boardFieldsInfo[47] = "H6";
-    boardFieldsInfo[48] = "A7";
-    boardFieldsInfo[49] = "B7";
-    boardFieldsInfo[50] = "C7";
-    boardFieldsInfo[51] = "D7";
-    boardFieldsInfo[52] = "E7";
-    boardFieldsInfo[53] = "F7";
-    boardFieldsInfo[54] = "G7";
-    boardFieldsInfo[55] = "H7";
-    boardFieldsInfo[56] = "A8";
-    boardFieldsInfo[57] = "B8";
-    boardFieldsInfo[58] = "C8";
-    boardFieldsInfo[59] = "D8";
-    boardFieldsInfo[60] = "E8";
-    boardFieldsInfo[61] = "F8";
-    boardFieldsInfo[62] = "G8";
-    boardFieldsInfo[63] = "H8";
+        boardFieldsInfo[0] = "A1";
+        boardFieldsInfo[1] = "B1";
+        boardFieldsInfo[2] = "C1";
+        boardFieldsInfo[3] = "D1";
+        boardFieldsInfo[4] = "E1";
+        boardFieldsInfo[5] = "F1";
+        boardFieldsInfo[6] = "G1";
+        boardFieldsInfo[7] = "H1";
+        boardFieldsInfo[8] = "A2";
+        boardFieldsInfo[9] = "B2";
+        boardFieldsInfo[10] = "C2";
+        boardFieldsInfo[11] = "D2";
+        boardFieldsInfo[12] = "E2";
+        boardFieldsInfo[13] = "F2";
+        boardFieldsInfo[14] = "G2";
+        boardFieldsInfo[15] = "H2";
+        boardFieldsInfo[16] = "A3";
+        boardFieldsInfo[17] = "B3";
+        boardFieldsInfo[18] = "C3";
+        boardFieldsInfo[19] = "D3";
+        boardFieldsInfo[20] = "E3";
+        boardFieldsInfo[21] = "F3";
+        boardFieldsInfo[22] = "G3";
+        boardFieldsInfo[23] = "H3";
+        boardFieldsInfo[24] = "A4";
+        boardFieldsInfo[25] = "B4";
+        boardFieldsInfo[26] = "C4";
+        boardFieldsInfo[27] = "D4";
+        boardFieldsInfo[28] = "E4";
+        boardFieldsInfo[29] = "F4";
+        boardFieldsInfo[30] = "G4";
+        boardFieldsInfo[31] = "H4";
+        boardFieldsInfo[32] = "A5";
+        boardFieldsInfo[33] = "B5";
+        boardFieldsInfo[34] = "C5";
+        boardFieldsInfo[35] = "D5";
+        boardFieldsInfo[36] = "E5";
+        boardFieldsInfo[37] = "F5";
+        boardFieldsInfo[38] = "G5";
+        boardFieldsInfo[39] = "H5";
+        boardFieldsInfo[40] = "A6";
+        boardFieldsInfo[41] = "B6";
+        boardFieldsInfo[42] = "C6";
+        boardFieldsInfo[43] = "D6";
+        boardFieldsInfo[44] = "E6";
+        boardFieldsInfo[45] = "F6";
+        boardFieldsInfo[46] = "G6";
+        boardFieldsInfo[47] = "H6";
+        boardFieldsInfo[48] = "A7";
+        boardFieldsInfo[49] = "B7";
+        boardFieldsInfo[50] = "C7";
+        boardFieldsInfo[51] = "D7";
+        boardFieldsInfo[52] = "E7";
+        boardFieldsInfo[53] = "F7";
+        boardFieldsInfo[54] = "G7";
+        boardFieldsInfo[55] = "H7";
+        boardFieldsInfo[56] = "A8";
+        boardFieldsInfo[57] = "B8";
+        boardFieldsInfo[58] = "C8";
+        boardFieldsInfo[59] = "D8";
+        boardFieldsInfo[60] = "E8";
+        boardFieldsInfo[61] = "F8";
+        boardFieldsInfo[62] = "G8";
+        boardFieldsInfo[63] = "H8";
 
-    piecesName[0] = "rook_white";
-    piecesName[1] = "knight_white";
-    piecesName[2] = "bishop_white";
-    piecesName[3] = "queen_white";
-    piecesName[4] = "king_white";
-    piecesName[5] = "pawn_white";
-    piecesName[6] = "rook_black";
-    piecesName[7] = "knight_black";
-    piecesName[8] = "bishop_black";
-    piecesName[9] = "queen_black";
-    piecesName[10] = "king_black";
-    piecesName[11] = "pawn_black";
+        piecesName[0] = "rook_white";
+        piecesName[1] = "knight_white";
+        piecesName[2] = "bishop_white";
+        piecesName[3] = "queen_white";
+        piecesName[4] = "king_white";
+        piecesName[5] = "pawn_white";
+        piecesName[6] = "rook_black";
+        piecesName[7] = "knight_black";
+        piecesName[8] = "bishop_black";
+        piecesName[9] = "queen_black";
+        piecesName[10] = "king_black";
+        piecesName[11] = "pawn_black";
 
-    for(i = 0; i < 16; i++){
-        firstMove[i] = true;
-    }
-//
-    }
-
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0)){
-            if(!wasClicked){
-                wasClicked = true;
-                Debug.Log("Pressed left click, casting ray");
-                CastRay();
-            }
-        }   
-    }
-
-    protected void CastRay(){
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast (ray.origin, ray.direction, Mathf.Infinity);
-        if(hit){
-            clickedField = hit.collider.gameObject.name;
-            CheckingClickedField();    
-        }else{
-            wasClicked = false;
-        }
-    }
-
-    protected void Setup(){
-        fieldsParent = GameObject.Find("Canvas/Board/Fields");
-        boardFields = new Image[fieldsParent.transform.childCount];
-
-        for(i = 0; i < fieldsParent.transform.childCount; i++){
-            boardFields[i] = fieldsParent.GetComponentsInChildren<Image>()[i];
-            //Debug.Log($"{boardFields[i]} = {i}");        
+        for(i = 0; i < 16; i++){
+            firstMove[i] = true;
         }
     }
 
@@ -245,62 +236,155 @@ public class Board_manager : MonoBehaviour
                                 boardFields[clickedPos + 8].sprite = pieceImgWhite[5];
                                 if(piecesInfo[clickedPos] == "pawn_whiteA2"){
                                     if(firstMove[0]){
-                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-                                        piecesInfo[clickedPos + 16] = "";
+                                        if(piecesInfo[clickedPos + 16] == "MoveOptionB"){
+                                            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                            piecesInfo[clickedPos + 16] = "";
+                                        }
                                         firstMove[0] = false;
                                     }   
                                 }
                                 if(piecesInfo[clickedPos] == "pawn_whiteB2"){
                                     if(firstMove[1]){
-                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-                                        piecesInfo[clickedPos + 16] = "";
+                                        if(piecesInfo[clickedPos + 16] == "MoveOptionB"){
+                                            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                            piecesInfo[clickedPos + 16] = "";
+                                        }
                                         firstMove[1] = false;
                                     }   
                                 }
                                 if(piecesInfo[clickedPos] == "pawn_whiteC2"){
                                     if(firstMove[2]){
-                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-                                        piecesInfo[clickedPos + 16] = "";
+                                        if(piecesInfo[clickedPos + 16] == "MoveOptionB"){
+                                            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                            piecesInfo[clickedPos + 16] = "";
+                                        }
                                         firstMove[2] = false;
                                     }   
                                 }
                                 if(piecesInfo[clickedPos] == "pawn_whiteD2"){
                                     if(firstMove[3]){
-                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-                                        piecesInfo[clickedPos + 16] = "";
+                                        if(piecesInfo[clickedPos + 16] == "MoveOptionB"){
+                                            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                            piecesInfo[clickedPos + 16] = "";
+                                        }
                                         firstMove[3] = false;
                                     }   
                                 }
                                 if(piecesInfo[clickedPos] == "pawn_whiteE2"){
                                     if(firstMove[4]){
-                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-                                        piecesInfo[clickedPos + 16] = "";
+                                        if(piecesInfo[clickedPos + 16] == "MoveOptionB"){
+                                            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                            piecesInfo[clickedPos + 16] = "";
+                                        }
                                         firstMove[4] = false;
                                     }   
                                 }
                                 if(piecesInfo[clickedPos] == "pawn_whiteF2"){
                                     if(firstMove[5]){
-                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-                                        piecesInfo[clickedPos + 16] = "";
+                                        if(piecesInfo[clickedPos + 16] == "MoveOptionB"){
+                                            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                            piecesInfo[clickedPos + 16] = "";
+                                        }
                                         firstMove[5] = false;
                                     }   
                                 }
                                 if(piecesInfo[clickedPos] == "pawn_whiteG2"){
                                     if(firstMove[6]){
-                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-                                        piecesInfo[clickedPos + 16] = "";
+                                        if(piecesInfo[clickedPos + 16] == "MoveOptionB"){
+                                            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                            piecesInfo[clickedPos + 16] = "";
+                                        }
                                         firstMove[6] = false;
                                     }   
                                 }
                                 if(piecesInfo[clickedPos] == "pawn_whiteH2"){
                                     if(firstMove[7]){
-                                        boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-                                        piecesInfo[clickedPos + 16] = "";
+                                        if(piecesInfo[clickedPos + 16] == "MoveOptionB"){
+                                            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                                            piecesInfo[clickedPos + 16] = "";
+                                        }
                                         firstMove[7] = false;
                                     }   
                                 }
                                 piecesInfo[clickedPos] = "";
                                 piecesInfo[clickedPos + 8] = clickedPiece;
+                            }else if(clickedPiece == "pawn_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                boardFields[clickedPos - 8].sprite = pieceImgBlack[5];
+                                if(piecesInfo[clickedPos] == "pawn_blackA7"){
+                                    if(firstMove[8]){
+                                        if(piecesInfo[clickedPos - 16] == "MoveOptionB"){
+                                            boardFields[clickedPos - 16].sprite = pieceImgBlack[11];
+                                            piecesInfo[clickedPos - 16] = "";
+                                        }
+                                        firstMove[8] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_blackB7"){
+                                    if(firstMove[9]){
+                                        if(piecesInfo[clickedPos - 16] == "MoveOptionB"){
+                                            boardFields[clickedPos - 16].sprite = pieceImgBlack[11];
+                                            piecesInfo[clickedPos - 16] = "";
+                                        }
+                                        firstMove[9] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_blackC7"){
+                                    if(firstMove[10]){
+                                        if(piecesInfo[clickedPos - 16] == "MoveOptionB"){
+                                            boardFields[clickedPos - 16].sprite = pieceImgBlack[11];
+                                            piecesInfo[clickedPos - 16] = "";
+                                        }
+                                        firstMove[10] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_blackD7"){
+                                    if(firstMove[11]){
+                                        if(piecesInfo[clickedPos - 16] == "MoveOptionB"){
+                                            boardFields[clickedPos - 16].sprite = pieceImgBlack[11];
+                                            piecesInfo[clickedPos - 16] = "";
+                                        }
+                                        firstMove[11] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_blackE7"){
+                                    if(firstMove[12]){
+                                        if(piecesInfo[clickedPos - 16] == "MoveOptionB"){
+                                            boardFields[clickedPos - 16].sprite = pieceImgBlack[11];
+                                            piecesInfo[clickedPos - 16] = "";
+                                        }
+                                        firstMove[12] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_blackF7"){
+                                    if(firstMove[13]){
+                                        if(piecesInfo[clickedPos - 16] == "MoveOptionB"){
+                                            boardFields[clickedPos - 16].sprite = pieceImgBlack[11];
+                                            piecesInfo[clickedPos - 16] = "";
+                                        }
+                                        firstMove[13] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_blackG7"){
+                                    if(firstMove[14]){
+                                        if(piecesInfo[clickedPos - 16] == "MoveOptionB"){
+                                            boardFields[clickedPos - 16].sprite = pieceImgBlack[11];
+                                            piecesInfo[clickedPos - 16] = "";
+                                        }
+                                        firstMove[14] = false;
+                                    }   
+                                }
+                                if(piecesInfo[clickedPos] == "pawn_blackH7"){
+                                    if(firstMove[15]){
+                                        if(piecesInfo[clickedPos - 16] == "MoveOptionB"){
+                                            boardFields[clickedPos - 16].sprite = pieceImgBlack[11];
+                                            piecesInfo[clickedPos - 16] = "";
+                                        }
+                                        firstMove[15] = false;
+                                    }   
+                                }
+                                piecesInfo[clickedPos] = "";
+                                piecesInfo[clickedPos - 8] = clickedPiece;
                             }else if(clickedPiece == "knight_white"){
                                 boardFields[clickedPos].sprite = pieceImgWhite[11];
                                 piecesInfo[clickedPos] = "";
@@ -358,6 +442,13 @@ public class Board_manager : MonoBehaviour
                                 piecesInfo[clickedPos] = "";
                                 piecesInfo[clickedPos + 8] = "";
                                 piecesInfo[clickedPos + 16] = clickedPiece;
+                            }else if(clickedPiece == "pawn_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                boardFields[clickedPos - 8].sprite = pieceImgBlack[11];
+                                boardFields[clickedPos - 16].sprite = pieceImgBlack[5];
+                                piecesInfo[clickedPos] = "";
+                                piecesInfo[clickedPos - 8] = "";
+                                piecesInfo[clickedPos - 16] = clickedPiece;
                             }else if(clickedPiece == "knight_white"){
                                 boardFields[clickedPos].sprite = pieceImgWhite[11];
                                 piecesInfo[clickedPos] = "";
@@ -734,7 +825,11 @@ public class Board_manager : MonoBehaviour
                             clickedPos = i;
                             clickedPiece = piecesName[j];
                             Debug.Log(clickedPiece);
-                            MovingPiecesWhite();
+                            if(clickedPiece.Contains("white")){
+                                MovingPiecesWhite();
+                            }else if(clickedPiece.Contains("black")){
+                                MovingPiecesBlack();
+                            }
                             alrClicked = true;
                             wasClicked = false;
                             break;
@@ -747,85 +842,97 @@ public class Board_manager : MonoBehaviour
 
     protected void MovingPiecesWhite(){
         if(clickedPiece == "pawn_white"){
-            boardFields[clickedPos + 8].sprite = circleBlack;
-            piecesInfo[clickedPos + 8] = "MoveOptionA";
+            if(piecesInfo[clickedPos + 8] == ""){
+                boardFields[clickedPos + 8].sprite = circleBlack;
+                piecesInfo[clickedPos + 8] = "MoveOptionA";
         ////firstmovepawnswhitecheck
-            if(piecesInfo[clickedPos] == "pawn_whiteA2" && firstMove[0]){
-                boardFields[clickedPos + 16].sprite = circleBlack;
-                piecesInfo[clickedPos + 16] = "MoveOptionB";
-            }
-            if(piecesInfo[clickedPos] == "pawn_whiteB2" && firstMove[1]){
-                boardFields[clickedPos + 16].sprite = circleBlack;
-                piecesInfo[clickedPos + 16] = "MoveOptionB";
-            }
-            if(piecesInfo[clickedPos] == "pawn_whiteC2" && firstMove[2]){
-                boardFields[clickedPos + 16].sprite = circleBlack;
-                piecesInfo[clickedPos + 16] = "MoveOptionB";
-            }
-            if(piecesInfo[clickedPos] == "pawn_whiteD2" && firstMove[3]){
-                boardFields[clickedPos + 16].sprite = circleBlack;
-                piecesInfo[clickedPos + 16] = "MoveOptionB";
-            }
-            if(piecesInfo[clickedPos] == "pawn_whiteE2" && firstMove[4]){
-                boardFields[clickedPos + 16].sprite = circleBlack;
-                piecesInfo[clickedPos + 16] = "MoveOptionB";
-            }
-            if(piecesInfo[clickedPos] == "pawn_whiteF2" && firstMove[5]){
-                boardFields[clickedPos + 16].sprite = circleBlack;
-                piecesInfo[clickedPos + 16] = "MoveOptionB";
-            }
-            if(piecesInfo[clickedPos] == "pawn_whiteG2" && firstMove[6]){
-                boardFields[clickedPos + 16].sprite = circleBlack;
-                piecesInfo[clickedPos + 16] = "MoveOptionB";
-            }
-            if(piecesInfo[clickedPos] == "pawn_whiteH2" && firstMove[7]){
-                boardFields[clickedPos + 16].sprite = circleBlack;
-                piecesInfo[clickedPos + 16] = "MoveOptionB";
+                if(piecesInfo[clickedPos] == "pawn_whiteA2" && firstMove[0] && piecesInfo[clickedPos + 16] == ""){
+                    boardFields[clickedPos + 16].sprite = circleBlack;
+                    piecesInfo[clickedPos + 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_whiteB2" && firstMove[1] && piecesInfo[clickedPos + 16] == ""){
+                    boardFields[clickedPos + 16].sprite = circleBlack;
+                    piecesInfo[clickedPos + 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_whiteC2" && firstMove[2] && piecesInfo[clickedPos + 16] == ""){
+                    boardFields[clickedPos + 16].sprite = circleBlack;
+                    piecesInfo[clickedPos + 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_whiteD2" && firstMove[3] && piecesInfo[clickedPos + 16] == ""){
+                    boardFields[clickedPos + 16].sprite = circleBlack;
+                    piecesInfo[clickedPos + 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_whiteE2" && firstMove[4] && piecesInfo[clickedPos + 16] == ""){
+                    boardFields[clickedPos + 16].sprite = circleBlack;
+                    piecesInfo[clickedPos + 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_whiteF2" && firstMove[5] && piecesInfo[clickedPos + 16] == ""){
+                    boardFields[clickedPos + 16].sprite = circleBlack;
+                    piecesInfo[clickedPos + 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_whiteG2" && firstMove[6] && piecesInfo[clickedPos + 16] == ""){
+                    boardFields[clickedPos + 16].sprite = circleBlack;
+                    piecesInfo[clickedPos + 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_whiteH2" && firstMove[7] && piecesInfo[clickedPos + 16] == ""){
+                    boardFields[clickedPos + 16].sprite = circleBlack;
+                    piecesInfo[clickedPos + 16] = "MoveOptionB";
+                }
             }
         //
         }else if(clickedPiece == "knight_white"){
-            if(boardFields[clickedPos].tag != "A2"){
-                if(boardFields[clickedPos].tag != "A1"  && boardFields[clickedPos].tag != "B1"){
+            if(boardFields[clickedPos].tag != "A2" && boardFields[clickedPos].tag != "A3 - A6" && boardFields[clickedPos].tag != "A8" && boardFields[clickedPos].tag != "G8" && boardFields[clickedPos].tag != "H8" && boardFields[clickedPos].tag != "C8 - F8" && boardFields[clickedPos].tag != "A7" && boardFields[clickedPos].tag != "B7"){
+                if(boardFields[clickedPos].tag != "A1"  && boardFields[clickedPos].tag != "B1" && boardFields[clickedPos].tag != "B3 - B6"){
                     if(piecesInfo[clickedPos + 6] == ""){
                         boardFields[clickedPos + 6].sprite = circleBlack;
                         piecesInfo[clickedPos + 6] = "MoveOptionA";
                     }
                 }
-                if(piecesInfo[clickedPos + 15] == ""){
-                    boardFields[clickedPos + 15].sprite = circleBlack;
-                    piecesInfo[clickedPos + 15] = "MoveOptionB";
+                if(boardFields[clickedPos].tag != "B8" && boardFields[clickedPos].tag != "G7" && boardFields[clickedPos].tag != "H7"){
+                    if(piecesInfo[clickedPos + 15] == ""){
+                        boardFields[clickedPos + 15].sprite = circleBlack;
+                        piecesInfo[clickedPos + 15] = "MoveOptionB";
+                    }
                 }
             }
-            if(boardFields[clickedPos].tag != "H1"){
+            if(boardFields[clickedPos].tag != "H1" && boardFields[clickedPos].tag != "H3 - H6" && boardFields[clickedPos].tag != "A8" && boardFields[clickedPos].tag != "B8" && boardFields[clickedPos].tag != "G8" && boardFields[clickedPos].tag != "H8" && boardFields[clickedPos].tag != "C8 - F8" && boardFields[clickedPos].tag != "A7" && boardFields[clickedPos].tag != "B7" && boardFields[clickedPos].tag != "G7" && boardFields[clickedPos].tag != "H7"){
                 if(piecesInfo[clickedPos + 17] == ""){
                     boardFields[clickedPos + 17].sprite = circleBlack;
                     piecesInfo[clickedPos + 17] = "MoveOptionC";
                 }
             }
             if(boardFields[clickedPos].tag != "A1"  && boardFields[clickedPos].tag != "H1"  && boardFields[clickedPos].tag != "G1"){
-                if(boardFields[clickedPos].tag != "G2"){
-                    if(piecesInfo[clickedPos + 10] == ""){
-                        boardFields[clickedPos + 10].sprite = circleBlack;
-                        piecesInfo[clickedPos + 10] = "MoveOptionD";
+                if(boardFields[clickedPos].tag != "G2" && boardFields[clickedPos].tag != "H3 - H6"){
+                    if(boardFields[clickedPos].tag != "G3 - G6" && boardFields[clickedPos].tag != "A8" && boardFields[clickedPos].tag != "B8" && boardFields[clickedPos].tag != "G8" && boardFields[clickedPos].tag != "H8" && boardFields[clickedPos].tag != "C8 - F8" && boardFields[clickedPos].tag != "G7" && boardFields[clickedPos].tag != "H7"){
+                        if(piecesInfo[clickedPos + 10] == ""){
+                            boardFields[clickedPos + 10].sprite = circleBlack;
+                            piecesInfo[clickedPos + 10] = "MoveOptionD";
+                        }
                     }
                     if(boardFields[clickedPos].tag != "B1"  && boardFields[clickedPos].tag != "C1 - F1"){
-                        if(piecesInfo[clickedPos - 6] == ""){
-                            boardFields[clickedPos - 6].sprite = circleBlack;
-                            piecesInfo[clickedPos - 6] = "MoveOptionE";
+                        if(boardFields[clickedPos].tag != "H1 - H6" && boardFields[clickedPos].tag != "G3 - G6" && boardFields[clickedPos].tag != "G8" && boardFields[clickedPos].tag != "G7" && boardFields[clickedPos].tag != "H7"){
+                            if(piecesInfo[clickedPos - 6] == ""){
+                                boardFields[clickedPos - 6].sprite = circleBlack;
+                                piecesInfo[clickedPos - 6] = "MoveOptionE";
+                            }
                         }
                         if(boardFields[clickedPos].tag != "A2" && boardFields[clickedPos].tag != "B2" && boardFields[clickedPos].tag != "C2 - F2"){
-                           if(piecesInfo[clickedPos - 15] == ""){
-                                boardFields[clickedPos - 15].sprite = circleBlack;
-                               piecesInfo[clickedPos - 15] = "MoveOptionF";
+                            if(boardFields[clickedPos].tag != "H3 - H6" && boardFields[clickedPos].tag != "H8" && boardFields[clickedPos].tag != "H7"){
+                                if(piecesInfo[clickedPos - 15] == ""){
+                                    boardFields[clickedPos - 15].sprite = circleBlack;
+                                    piecesInfo[clickedPos - 15] = "MoveOptionF";
+                                }
                             }
-                            if(piecesInfo[clickedPos - 17] == ""){
-                                boardFields[clickedPos - 17].sprite = circleBlack;
-                                piecesInfo[clickedPos - 17] = "MoveOptionG";
+                            if(boardFields[clickedPos].tag != "A3 - A6" && boardFields[clickedPos].tag != "A8" && boardFields[clickedPos].tag != "A7"){
+                                if(piecesInfo[clickedPos - 17] == ""){
+                                    boardFields[clickedPos - 17].sprite = circleBlack;
+                                    piecesInfo[clickedPos - 17] = "MoveOptionG";
+                                }
                             }
                         }
                     }
                 }   
-                if(boardFields[clickedPos].tag != "B1" && boardFields[clickedPos].tag != "C1 - F1" && boardFields[clickedPos].tag != "A2" && boardFields[clickedPos].tag != "B2"){
+                if(boardFields[clickedPos].tag != "B1" && boardFields[clickedPos].tag != "C1 - F1" && boardFields[clickedPos].tag != "A2" && boardFields[clickedPos].tag != "B2" && boardFields[clickedPos].tag != "A3 - A6" && boardFields[clickedPos].tag != "B3 - B6" && boardFields[clickedPos].tag != "A8" && boardFields[clickedPos].tag != "B8" && boardFields[clickedPos].tag != "A7" && boardFields[clickedPos].tag != "B7"){
                     if(piecesInfo[clickedPos - 10] == ""){
                         boardFields[clickedPos - 10].sprite = circleBlack;
                         piecesInfo[clickedPos - 10] = "MoveOptionH";
@@ -835,13 +942,66 @@ public class Board_manager : MonoBehaviour
         }
     }
 
+    protected void MovingPiecesBlack(){
+        if(clickedPiece == "pawn_black"){
+            if(piecesInfo[clickedPos - 8] == ""){
+                boardFields[clickedPos - 8].sprite = circleBlack;
+                piecesInfo[clickedPos - 8] = "MoveOptionA";
+        ////firstmovepawnsblackcheck
+                if(piecesInfo[clickedPos] == "pawn_blackA7" && firstMove[8] && piecesInfo[clickedPos - 16] == ""){
+                    boardFields[clickedPos - 16].sprite = circleBlack;
+                    piecesInfo[clickedPos - 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_blackB7" && firstMove[9] && piecesInfo[clickedPos - 16] == ""){
+                    boardFields[clickedPos - 16].sprite = circleBlack;
+                    piecesInfo[clickedPos - 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_blackC7" && firstMove[10] && piecesInfo[clickedPos - 16] == ""){
+                    boardFields[clickedPos - 16].sprite = circleBlack;
+                    piecesInfo[clickedPos - 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_blackD7" && firstMove[11] && piecesInfo[clickedPos - 16] == ""){
+                    boardFields[clickedPos - 16].sprite = circleBlack;
+                    piecesInfo[clickedPos - 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_blackE7" && firstMove[12] && piecesInfo[clickedPos - 16] == ""){
+                    boardFields[clickedPos - 16].sprite = circleBlack;
+                    piecesInfo[clickedPos - 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_blackF7" && firstMove[13] && piecesInfo[clickedPos - 16] == ""){
+                    boardFields[clickedPos - 16].sprite = circleBlack;
+                    piecesInfo[clickedPos - 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_blackG7" && firstMove[14] && piecesInfo[clickedPos - 16] == ""){
+                    boardFields[clickedPos - 16].sprite = circleBlack;
+                    piecesInfo[clickedPos - 16] = "MoveOptionB";
+                }
+                if(piecesInfo[clickedPos] == "pawn_blackH7" && firstMove[15] && piecesInfo[clickedPos - 16] == ""){
+                    boardFields[clickedPos - 16].sprite = circleBlack;
+                    piecesInfo[clickedPos - 16] = "MoveOptionB";
+                }
+            }
+        //
+        }
+    }
+
     protected void CancelMoving(){
         if(clickedPiece == "pawn_white"){
-            boardFields[clickedPos + 8].sprite = pieceImgWhite[11];
-            boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
-            piecesInfo[clickedPos + 8] = "";
-            piecesInfo[clickedPos + 16] = "";
-            alrClicked = false;
+            if(piecesInfo[clickedPos + 8] == "MoveOptionA" || piecesInfo[clickedPos + 16] == "MoveOptionB"){
+                boardFields[clickedPos + 8].sprite = pieceImgWhite[11];
+                piecesInfo[clickedPos + 8] = "";
+                boardFields[clickedPos + 16].sprite = pieceImgWhite[11];
+                piecesInfo[clickedPos + 16] = "";
+                alrClicked = false;
+            }
+        }else if(clickedPiece == "pawn_black"){
+            if(piecesInfo[clickedPos - 8] == "MoveOptionA" || piecesInfo[clickedPos - 16] == "MoveOptionB"){
+                boardFields[clickedPos - 8].sprite = pieceImgBlack[11];
+                piecesInfo[clickedPos - 8] = "";
+                boardFields[clickedPos - 16].sprite = pieceImgBlack[11];
+                piecesInfo[clickedPos - 16] = "";
+                alrClicked = false;
+            }    
         }else if(clickedPiece == "knight_white"){
             boardFields[clickedPos + 15].sprite = pieceImgWhite[11];
             boardFields[clickedPos + 17].sprite = pieceImgWhite[11];
@@ -851,4 +1011,4 @@ public class Board_manager : MonoBehaviour
         }
     }
 }
-///////////DODAC RUCH KONI NA BOKACH!!!
+////DODAĆ C7 - F7 I CZANRE KONIE
