@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 116398261}
   m_Layer: 5
   m_Name: C7
-  m_TagString: Untagged
+  m_TagString: C7 - F7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1192,7 +1192,7 @@ GameObject:
   - component: {fileID: 199180593}
   m_Layer: 5
   m_Name: D7
-  m_TagString: Untagged
+  m_TagString: C7 - F7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5246,7 +5246,7 @@ GameObject:
   - component: {fileID: 804578546}
   m_Layer: 5
   m_Name: F7
-  m_TagString: Untagged
+  m_TagString: C7 - F7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9981,7 +9981,7 @@ GameObject:
   - component: {fileID: 1653980154}
   m_Layer: 5
   m_Name: E7
-  m_TagString: Untagged
+  m_TagString: C7 - F7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
