@@ -30,9 +30,6 @@ public class Board_manager : MonoBehaviour
         Setup();
     }
 
-    protected void test(){
-        Debug.Log("agg");
-    }
     void Update(){
         if(Input.GetMouseButtonDown(0)){
             if(!wasClicked){
@@ -113,7 +110,7 @@ public class Board_manager : MonoBehaviour
         piecesInfo[55] = "pawn_blackH7";
         boardFields[55].sprite = pieceImgBlack[5];
         
-        piecesInfo[8] = "";
+        piecesInfo[8] = "pawn_whiteA2";
         boardFields[8].sprite = pieceImgWhite[5];
         piecesInfo[9] = "pawn_whiteB2";
         boardFields[9].sprite = pieceImgWhite[5];
@@ -537,6 +534,40 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 }         
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("A")){
+                                    boardFields[0].sprite = pieceImgBlack[0];
+                                    piecesInfo[0] = clickedPiece;
+                                }else if(boardFieldsInfo[clickedPos].Contains("B")){
+                                    boardFields[1].sprite = pieceImgBlack[0];
+                                    piecesInfo[1] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("C")){
+                                    boardFields[2].sprite = pieceImgBlack[0];
+                                    piecesInfo[2] = clickedPiece;     
+                                }else if(boardFieldsInfo[clickedPos].Contains("D")){
+                                    boardFields[3].sprite = pieceImgBlack[0];
+                                    piecesInfo[3] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("E")){
+                                    boardFields[4].sprite = pieceImgBlack[0];
+                                    piecesInfo[4] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("F")){
+                                    boardFields[5].sprite = pieceImgBlack[0];
+                                    piecesInfo[5] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("G")){
+                                    boardFields[6].sprite = pieceImgBlack[0];
+                                    piecesInfo[6] = clickedPiece;    
+                                }else if(boardFieldsInfo[clickedPos].Contains("H")){
+                                    boardFields[7].sprite = pieceImgBlack[0];
+                                    piecesInfo[7] = clickedPiece;      
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }         
                             }
                             alrClicked = false;
                             wasClicked = false;
@@ -682,6 +713,40 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 }     
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("A")){
+                                    boardFields[8].sprite = pieceImgBlack[0];
+                                    piecesInfo[8] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("B")){
+                                    boardFields[9].sprite = pieceImgBlack[0];
+                                    piecesInfo[9] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("C")){
+                                    boardFields[10].sprite = pieceImgBlack[0];
+                                    piecesInfo[10] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("D")){
+                                    boardFields[11].sprite = pieceImgBlack[0];
+                                    piecesInfo[11] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("E")){
+                                    boardFields[12].sprite = pieceImgBlack[0];
+                                    piecesInfo[12] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("F")){
+                                    boardFields[13].sprite = pieceImgBlack[0];
+                                    piecesInfo[13] = clickedPiece;  
+                                }else if(boardFieldsInfo[clickedPos].Contains("G")){
+                                    boardFields[14].sprite = pieceImgBlack[0];
+                                    piecesInfo[14] = clickedPiece;     
+                                }else if(boardFieldsInfo[clickedPos].Contains("H")){
+                                    boardFields[15].sprite = pieceImgBlack[0];
+                                    piecesInfo[15] = clickedPiece;      
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }     
                             }
                             alrClicked = false;
                             wasClicked = false;
@@ -815,6 +880,40 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 }   
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("A")){
+                                    boardFields[16].sprite = pieceImgBlack[0];
+                                    piecesInfo[16] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("B")){
+                                    boardFields[17].sprite = pieceImgBlack[0];
+                                    piecesInfo[17] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("C")){
+                                    boardFields[18].sprite = pieceImgBlack[0];
+                                    piecesInfo[18] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("D")){
+                                    boardFields[19].sprite = pieceImgBlack[0];
+                                    piecesInfo[19] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("E")){
+                                    boardFields[20].sprite = pieceImgBlack[0];
+                                    piecesInfo[20] = clickedPiece;     
+                                }else if(boardFieldsInfo[clickedPos].Contains("F")){
+                                    boardFields[21].sprite = pieceImgBlack[0];
+                                    piecesInfo[21] = clickedPiece;     
+                                }else if(boardFieldsInfo[clickedPos].Contains("G")){
+                                    boardFields[22].sprite = pieceImgBlack[0];
+                                    piecesInfo[22] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("H")){
+                                    boardFields[23].sprite = pieceImgBlack[0];
+                                    piecesInfo[23] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgBlack[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }   
                             }
                             alrClicked = false;
                             wasClicked = false;
@@ -941,6 +1040,41 @@ public class Board_manager : MonoBehaviour
                                     piecesInfo[30] = clickedPiece;      
                                 }else if(boardFieldsInfo[clickedPos].Contains("H")){
                                     boardFields[31].sprite = pieceImgWhite[0];
+                                    piecesInfo[31] = clickedPiece;      
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }    
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("A") || boardFieldsInfo[clickedPos].Contains("4")){
+                                    Debug.Log("22");
+                                    boardFields[24].sprite = pieceImgBlack[0];
+                                    piecesInfo[24] = clickedPiece;     
+                                }else if(boardFieldsInfo[clickedPos].Contains("B")){
+                                    boardFields[25].sprite = pieceImgBlack[0];
+                                    piecesInfo[25] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("C")){
+                                    boardFields[26].sprite = pieceImgBlack[0];
+                                    piecesInfo[26] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("D")){
+                                    boardFields[27].sprite = pieceImgBlack[0];
+                                    piecesInfo[27] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("E")){
+                                    boardFields[28].sprite = pieceImgBlack[0];
+                                    piecesInfo[28] = clickedPiece;     
+                                }else if(boardFieldsInfo[clickedPos].Contains("F")){
+                                    boardFields[29].sprite = pieceImgBlack[0];
+                                    piecesInfo[29] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("G")){
+                                    boardFields[30].sprite = pieceImgBlack[0];
+                                    piecesInfo[30] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("H")){
+                                    boardFields[31].sprite = pieceImgBlack[0];
                                     piecesInfo[31] = clickedPiece;      
                                 }
                                 for(i = 0; i < 64; i++){
@@ -1082,6 +1216,40 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 }     
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("A")){
+                                    boardFields[32].sprite = pieceImgBlack[0];
+                                    piecesInfo[32] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("B")){
+                                    boardFields[33].sprite = pieceImgBlack[0];
+                                    piecesInfo[33] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("C")){
+                                    boardFields[34].sprite = pieceImgBlack[0];
+                                    piecesInfo[34] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("D")){
+                                    boardFields[35].sprite = pieceImgBlack[0];
+                                    piecesInfo[35] = clickedPiece;     
+                                }else if(boardFieldsInfo[clickedPos].Contains("E")){
+                                    boardFields[36].sprite = pieceImgBlack[0];
+                                    piecesInfo[36] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("F")){
+                                    boardFields[37].sprite = pieceImgBlack[0];
+                                    piecesInfo[37] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("G")){
+                                    boardFields[38].sprite = pieceImgBlack[0];
+                                    piecesInfo[38] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("H")){
+                                    boardFields[39].sprite = pieceImgBlack[0];
+                                    piecesInfo[39] = clickedPiece;      
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }     
                             }
                             alrClicked = false;
                             wasClicked = false;
@@ -1215,7 +1383,41 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 }        
-                            }
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("A")){
+                                    boardFields[40].sprite = pieceImgBlack[0];
+                                    piecesInfo[40] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("B")){
+                                    boardFields[41].sprite = pieceImgBlack[0];
+                                    piecesInfo[41] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("C")){
+                                    boardFields[42].sprite = pieceImgBlack[0];
+                                    piecesInfo[42] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("D")){
+                                    boardFields[43].sprite = pieceImgBlack[0];
+                                    piecesInfo[43] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("E")){
+                                    boardFields[44].sprite = pieceImgBlack[0];
+                                    piecesInfo[44] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("F")){
+                                    boardFields[45].sprite = pieceImgBlack[0];
+                                    piecesInfo[45] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("G")){
+                                    boardFields[46].sprite = pieceImgBlack[0];
+                                    piecesInfo[46] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("H")){
+                                    boardFields[47].sprite = pieceImgBlack[0];
+                                    piecesInfo[47] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }    
+                            }   
                             alrClicked = false;
                             wasClicked = false;
                             break;
@@ -1340,6 +1542,40 @@ public class Board_manager : MonoBehaviour
                                     piecesInfo[54] = clickedPiece;       
                                 }else if(boardFieldsInfo[clickedPos].Contains("H")){
                                     boardFields[55].sprite = pieceImgWhite[0];
+                                    piecesInfo[55] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }   
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("A")){
+                                    boardFields[48].sprite = pieceImgBlack[0];
+                                    piecesInfo[48] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("B")){
+                                    boardFields[49].sprite = pieceImgBlack[0];
+                                    piecesInfo[49] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("C")){
+                                    boardFields[50].sprite = pieceImgBlack[0];
+                                    piecesInfo[50] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("D")){
+                                    boardFields[51].sprite = pieceImgBlack[0];
+                                    piecesInfo[51] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("E")){
+                                    boardFields[52].sprite = pieceImgBlack[0];
+                                    piecesInfo[52] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("F")){
+                                    boardFields[53].sprite = pieceImgBlack[0];
+                                    piecesInfo[53] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("G")){
+                                    boardFields[54].sprite = pieceImgBlack[0];
+                                    piecesInfo[54] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("H")){
+                                    boardFields[55].sprite = pieceImgBlack[0];
                                     piecesInfo[55] = clickedPiece;       
                                 }
                                 for(i = 0; i < 64; i++){
@@ -1481,7 +1717,41 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 } 
-                            }    
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("A")){
+                                    boardFields[56].sprite = pieceImgBlack[0];
+                                    piecesInfo[56] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("B")){
+                                    boardFields[57].sprite = pieceImgBlack[0];
+                                    piecesInfo[57] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("C")){
+                                    boardFields[58].sprite = pieceImgBlack[0];
+                                    piecesInfo[58] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("D")){
+                                    boardFields[59].sprite = pieceImgBlack[0];
+                                    piecesInfo[59] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("E")){
+                                    boardFields[60].sprite = pieceImgBlack[0];
+                                    piecesInfo[60] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("F")){
+                                    boardFields[61].sprite = pieceImgBlack[0];
+                                    piecesInfo[61] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("G")){
+                                    boardFields[62].sprite = pieceImgBlack[0];
+                                    piecesInfo[62] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("H")){
+                                    boardFields[63].sprite = pieceImgBlack[0];
+                                    piecesInfo[63] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                } 
+                            }  
                             alrClicked = false;
                             wasClicked = false;
                             break;
@@ -1512,6 +1782,41 @@ public class Board_manager : MonoBehaviour
                                     piecesInfo[48] = clickedPiece;       
                                 }else if(boardFieldsInfo[clickedPos].Contains("8")){
                                     boardFields[56].sprite = pieceImgWhite[0];
+                                    piecesInfo[56] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                } 
+                                      
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("1")){
+                                    boardFields[0].sprite = pieceImgBlack[0];
+                                    piecesInfo[0] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("2")){
+                                    boardFields[8].sprite = pieceImgBlack[0];
+                                    piecesInfo[8] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("3")){
+                                    boardFields[16].sprite = pieceImgBlack[0];
+                                    piecesInfo[16] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("4")){
+                                    boardFields[24].sprite = pieceImgBlack[0];
+                                    piecesInfo[24] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("5")){
+                                    boardFields[32].sprite = pieceImgBlack[0];
+                                    piecesInfo[32] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("6")){
+                                    boardFields[40].sprite = pieceImgBlack[0];
+                                    piecesInfo[40] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("7")){
+                                    boardFields[48].sprite = pieceImgBlack[0];
+                                    piecesInfo[48] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("8")){
+                                    boardFields[56].sprite = pieceImgBlack[0];
                                     piecesInfo[56] = clickedPiece;       
                                 }
                                 for(i = 0; i < 64; i++){
@@ -1560,6 +1865,40 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 }       
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("1")){
+                                    boardFields[1].sprite = pieceImgBlack[0];
+                                    piecesInfo[1] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("2")){
+                                    boardFields[9].sprite = pieceImgBlack[0];
+                                    piecesInfo[9] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("3")){
+                                    boardFields[17].sprite = pieceImgBlack[0];
+                                    piecesInfo[17] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("4")){
+                                    boardFields[25].sprite = pieceImgBlack[0];
+                                    piecesInfo[25] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("5")){
+                                    boardFields[33].sprite = pieceImgBlack[0];
+                                    piecesInfo[33] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("6")){
+                                    boardFields[41].sprite = pieceImgBlack[0];
+                                    piecesInfo[41] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("7")){
+                                    boardFields[49].sprite = pieceImgBlack[0];
+                                    piecesInfo[49] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("8")){
+                                    boardFields[57].sprite = pieceImgBlack[0];
+                                    piecesInfo[57] = clickedPiece;      
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }       
                             }
                             alrClicked = false;
                             wasClicked = false;
@@ -1591,6 +1930,40 @@ public class Board_manager : MonoBehaviour
                                     piecesInfo[50] = clickedPiece;       
                                 }else if(boardFieldsInfo[clickedPos].Contains("8")){
                                     boardFields[58].sprite = pieceImgWhite[0];
+                                    piecesInfo[58] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }    
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("1")){
+                                    boardFields[2].sprite = pieceImgBlack[0];
+                                    piecesInfo[2] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("2")){
+                                    boardFields[10].sprite = pieceImgBlack[0];
+                                    piecesInfo[10] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("3")){
+                                    boardFields[18].sprite = pieceImgBlack[0];
+                                    piecesInfo[18] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("4")){
+                                    boardFields[26].sprite = pieceImgBlack[0];
+                                    piecesInfo[26] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("5")){
+                                    boardFields[34].sprite = pieceImgBlack[0];
+                                    piecesInfo[34] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("6")){
+                                    boardFields[42].sprite = pieceImgBlack[0];
+                                    piecesInfo[42] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("7")){
+                                    boardFields[50].sprite = pieceImgBlack[0];
+                                    piecesInfo[50] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("8")){
+                                    boardFields[58].sprite = pieceImgBlack[0];
                                     piecesInfo[58] = clickedPiece;       
                                 }
                                 for(i = 0; i < 64; i++){
@@ -1638,6 +2011,40 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 }    
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("1")){
+                                    boardFields[3].sprite = pieceImgBlack[0];
+                                    piecesInfo[3] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("2")){
+                                    boardFields[11].sprite = pieceImgBlack[0];
+                                    piecesInfo[11] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("3")){
+                                    boardFields[19].sprite = pieceImgBlack[0];
+                                    piecesInfo[19] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("4")){
+                                    boardFields[27].sprite = pieceImgBlack[0];
+                                    piecesInfo[27] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("5")){
+                                    boardFields[35].sprite = pieceImgBlack[0];
+                                    piecesInfo[35] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("6")){
+                                    boardFields[43].sprite = pieceImgBlack[0];
+                                    piecesInfo[43] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("7")){
+                                    boardFields[51].sprite = pieceImgBlack[0];
+                                    piecesInfo[51] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("8")){
+                                    boardFields[59].sprite = pieceImgBlack[0];
+                                    piecesInfo[59] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }    
                             }
                             alrClicked = false;
                             wasClicked = false;
@@ -1669,6 +2076,40 @@ public class Board_manager : MonoBehaviour
                                     piecesInfo[52] = clickedPiece;       
                                 }else if(boardFieldsInfo[clickedPos].Contains("8")){
                                     boardFields[60].sprite = pieceImgWhite[0];
+                                    piecesInfo[60] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }    
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("1")){
+                                    boardFields[4].sprite = pieceImgBlack[0];
+                                    piecesInfo[4] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("2")){
+                                    boardFields[12].sprite = pieceImgBlack[0];
+                                    piecesInfo[12] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("3")){
+                                    boardFields[20].sprite = pieceImgBlack[0];
+                                    piecesInfo[20] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("4")){
+                                    boardFields[28].sprite = pieceImgBlack[0];
+                                    piecesInfo[28] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("5")){
+                                    boardFields[36].sprite = pieceImgBlack[0];
+                                    piecesInfo[36] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("6")){
+                                    boardFields[44].sprite = pieceImgBlack[0];
+                                    piecesInfo[44] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("7")){
+                                    boardFields[52].sprite = pieceImgBlack[0];
+                                    piecesInfo[52] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("8")){
+                                    boardFields[60].sprite = pieceImgBlack[0];
                                     piecesInfo[60] = clickedPiece;       
                                 }
                                 for(i = 0; i < 64; i++){
@@ -1716,6 +2157,40 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 }    
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("1")){
+                                    boardFields[5].sprite = pieceImgBlack[0];
+                                    piecesInfo[5] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("2")){
+                                    boardFields[13].sprite = pieceImgBlack[0];
+                                    piecesInfo[13] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("3")){
+                                    boardFields[21].sprite = pieceImgBlack[0];
+                                    piecesInfo[21] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("4")){
+                                    boardFields[29].sprite = pieceImgBlack[0];
+                                    piecesInfo[29] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("5")){
+                                    boardFields[37].sprite = pieceImgBlack[0];
+                                    piecesInfo[37] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("6")){
+                                    boardFields[45].sprite = pieceImgBlack[0];
+                                    piecesInfo[45] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("7")){
+                                    boardFields[53].sprite = pieceImgBlack[0];
+                                    piecesInfo[53] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("8")){
+                                    boardFields[61].sprite = pieceImgBlack[0];
+                                    piecesInfo[61] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }    
                             }
                             alrClicked = false;
                             wasClicked = false;
@@ -1755,6 +2230,40 @@ public class Board_manager : MonoBehaviour
                                         piecesInfo[i] = "";
                                     }
                                 }    
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("1")){
+                                    boardFields[6].sprite = pieceImgBlack[0];
+                                    piecesInfo[6] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("2")){
+                                    boardFields[14].sprite = pieceImgBlack[0];
+                                    piecesInfo[14] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("3")){
+                                    boardFields[22].sprite = pieceImgBlack[0];
+                                    piecesInfo[22] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("4")){
+                                    boardFields[30].sprite = pieceImgBlack[0];
+                                    piecesInfo[30] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("5")){
+                                    boardFields[38].sprite = pieceImgBlack[0];
+                                    piecesInfo[38] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("6")){
+                                    boardFields[46].sprite = pieceImgBlack[0];
+                                    piecesInfo[46] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("7")){
+                                    boardFields[54].sprite = pieceImgBlack[0];
+                                    piecesInfo[54] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("8")){
+                                    boardFields[62].sprite = pieceImgBlack[0];
+                                    piecesInfo[62] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }    
                             }
                             alrClicked = false;
                             wasClicked = false;
@@ -1786,6 +2295,40 @@ public class Board_manager : MonoBehaviour
                                     piecesInfo[55] = clickedPiece;       
                                 }else if(boardFieldsInfo[clickedPos].Contains("8")){
                                     boardFields[63].sprite = pieceImgWhite[0];
+                                    piecesInfo[63] = clickedPiece;       
+                                }
+                                for(i = 0; i < 64; i++){
+                                    if(piecesInfo[i].Contains("MoveOption")){
+                                        boardFields[i].sprite = pieceImgWhite[11];
+                                        piecesInfo[i] = "";
+                                    }
+                                }    
+                            }else if(clickedPiece == "rook_black"){
+                                boardFields[clickedPos].sprite = pieceImgBlack[11];
+                                piecesInfo[clickedPos] = "";
+                                if(boardFieldsInfo[clickedPos].Contains("1")){
+                                    boardFields[7].sprite = pieceImgBlack[0];
+                                    piecesInfo[7] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("2")){
+                                    boardFields[15].sprite = pieceImgBlack[0];
+                                    piecesInfo[15] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("3")){
+                                    boardFields[23].sprite = pieceImgBlack[0];
+                                    piecesInfo[23] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("4")){
+                                    boardFields[31].sprite = pieceImgBlack[0];
+                                    piecesInfo[31] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("5")){
+                                    boardFields[39].sprite = pieceImgBlack[0];
+                                    piecesInfo[39] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("6")){
+                                    boardFields[47].sprite = pieceImgBlack[0];
+                                    piecesInfo[47] = clickedPiece;      
+                                }else if(boardFieldsInfo[clickedPos].Contains("7")){
+                                    boardFields[55].sprite = pieceImgBlack[0];
+                                    piecesInfo[55] = clickedPiece;       
+                                }else if(boardFieldsInfo[clickedPos].Contains("8")){
+                                    boardFields[63].sprite = pieceImgBlack[0];
                                     piecesInfo[63] = clickedPiece;       
                                 }
                                 for(i = 0; i < 64; i++){
@@ -1883,22 +2426,22 @@ public class Board_manager : MonoBehaviour
                 }
             }
             if(boardFields[clickedPos].tag != "A1"  && boardFields[clickedPos].tag != "H1"  && boardFields[clickedPos].tag != "G1"){
-                if(boardFields[clickedPos].tag != "G2" && boardFields[clickedPos].tag != "H3 - H6"){
-                    if(boardFields[clickedPos].tag != "G3 - G6" && boardFields[clickedPos].tag != "A8" && boardFields[clickedPos].tag != "B8" && boardFields[clickedPos].tag != "G8" && boardFields[clickedPos].tag != "H8" && boardFields[clickedPos].tag != "C8 - F8" && boardFields[clickedPos].tag != "G7" && boardFields[clickedPos].tag != "H7"){
+                if(boardFields[clickedPos].tag != "G2"){
+                    if(boardFields[clickedPos].tag != "G3 - G6" && boardFields[clickedPos].tag != "A8" && boardFields[clickedPos].tag != "B8" && boardFields[clickedPos].tag != "G8" && boardFields[clickedPos].tag != "H8" && boardFields[clickedPos].tag != "C8 - F8" && boardFields[clickedPos].tag != "G7" && boardFields[clickedPos].tag != "H7" && boardFields[clickedPos].tag != "H3 - H6"){
                         if(piecesInfo[clickedPos + 10] == ""){
                             boardFields[clickedPos + 10].sprite = circleBlack;
                             piecesInfo[clickedPos + 10] = "MoveOptionD";
                         }
                     }
                     if(boardFields[clickedPos].tag != "B1"  && boardFields[clickedPos].tag != "C1 - F1"){
-                        if(boardFields[clickedPos].tag != "H1 - H6" && boardFields[clickedPos].tag != "G3 - G6" && boardFields[clickedPos].tag != "G8" && boardFields[clickedPos].tag != "G7" && boardFields[clickedPos].tag != "H7"){
+                        if(boardFields[clickedPos].tag != "H1 - H6" && boardFields[clickedPos].tag != "G3 - G6" && boardFields[clickedPos].tag != "G8" && boardFields[clickedPos].tag != "G7" && boardFields[clickedPos].tag != "H7" && boardFields[clickedPos].tag != "H3 - H6"){
                             if(piecesInfo[clickedPos - 6] == ""){
                                 boardFields[clickedPos - 6].sprite = circleBlack;
                                 piecesInfo[clickedPos - 6] = "MoveOptionE";
                             }
                         }
                         if(boardFields[clickedPos].tag != "A2" && boardFields[clickedPos].tag != "B2" && boardFields[clickedPos].tag != "C2 - F2"){
-                            if(boardFields[clickedPos].tag != "H3 - H6" && boardFields[clickedPos].tag != "H8" && boardFields[clickedPos].tag != "H7"){
+                            if(boardFields[clickedPos].tag != "H3 - H6" && boardFields[clickedPos].tag != "H8" && boardFields[clickedPos].tag != "H7" && boardFields[clickedPos].tag != "H3 - H6"){
                                 if(piecesInfo[clickedPos - 15] == ""){
                                     boardFields[clickedPos - 15].sprite = circleBlack;
                                     piecesInfo[clickedPos - 15] = "MoveOptionF";
@@ -1940,31 +2483,40 @@ public class Board_manager : MonoBehaviour
             }
             for(i = t, n = 0; i < 64; i += 8, n++){
                 if(piecesInfo[i] == ""){
+                    if(blocked){
+                        blocked = false;
+                        break;
+                    }
                     boardFields[i].sprite = circleBlack;
                     piecesInfo[i] = "MoveOption" + alphabet[n];
+                    if(piecesInfo[i] == "MoveOptionE"){
+                        Debug.Log("a");
+                    }
                 }else if(!piecesInfo[i].Contains("rook_white")){
                     if(i < clickedPos){
                         for(j = i - 8; j > 0; j -= 8){
                             if(piecesInfo[j].Contains("white") || piecesInfo[j].Contains("black")){
-                                break;
+                                continue;
                             }else{
                                 boardFields[j].sprite = pieceImgWhite[11];
                                 piecesInfo[j] = "";
                             }
                         }
                     }else if(i > clickedPos){
-                        for(j = i + 8; j < 63; j += 8){
+                        for(j = i + 8; j < 64; j = j + 8){
                             if(piecesInfo[j].Contains("white") || piecesInfo[j].Contains("black")){
-                                break;
+                                blocked = true;
+                                continue;
                             }else{
+                                Debug.Log(j);
                                 boardFields[j].sprite = pieceImgWhite[11];
                                 piecesInfo[j] = "";
                             }
                         }
                     }
-                    continue;
                 }
             }
+            blocked = false;
             if(boardFieldsInfo[clickedPos].Contains("1")){
                 t = 0;
             }else if(boardFieldsInfo[clickedPos].Contains("2")){
@@ -1982,7 +2534,7 @@ public class Board_manager : MonoBehaviour
             }else if(boardFieldsInfo[clickedPos].Contains("8")){
                 t = 56;
             }
-            for(i = t; i < t + 8; i++, n++){
+            for(i = t, n = 8; i < t + 8; i++, n++){
                 if(piecesInfo[i] == ""){
                     if(blocked){
                         blocked = false;
@@ -1990,6 +2542,9 @@ public class Board_manager : MonoBehaviour
                     }
                     boardFields[i].sprite = circleBlack;
                     piecesInfo[i] = "MoveOption" + alphabet[n];
+                    if(piecesInfo[i] == "MoveOptionE"){
+                        Debug.Log("b");
+                    }
                 }else if(!piecesInfo[i].Contains("rook_white")){
                     if(i < clickedPos){
                         for(j = t; j < i; j++){
@@ -2002,7 +2557,6 @@ public class Board_manager : MonoBehaviour
                             }
                         }
                     }else if(i > clickedPos){
-                        Debug.Log("c");
                         for(j = t + 7; j > clickedPos; j--){
                             if(piecesInfo[j].Contains("white") || piecesInfo[j].Contains("black")){
                                 blocked = true;
@@ -2013,7 +2567,6 @@ public class Board_manager : MonoBehaviour
                             }
                         }
                     }
-                    //continue;
                 }
             }
         }
@@ -2115,6 +2668,112 @@ public class Board_manager : MonoBehaviour
                     if(piecesInfo[clickedPos - 10] == ""){
                         boardFields[clickedPos - 10].sprite = circleBlack;
                         piecesInfo[clickedPos - 10] = "MoveOptionH";
+                    }
+                }
+            }
+        }else if (clickedPiece == "rook_black"){
+            if(boardFieldsInfo[clickedPos].Contains("A")){
+                t = 0;
+            }else if(boardFieldsInfo[clickedPos].Contains("B")){
+                t = 1;
+            }else if(boardFieldsInfo[clickedPos].Contains("C")){
+                t = 2;
+            }else if(boardFieldsInfo[clickedPos].Contains("D")){
+                t = 3;
+            }else if(boardFieldsInfo[clickedPos].Contains("E")){
+                t = 4;
+            }else if(boardFieldsInfo[clickedPos].Contains("F")){
+                t = 5;
+            }else if(boardFieldsInfo[clickedPos].Contains("G")){
+                t = 6;
+            }else if(boardFieldsInfo[clickedPos].Contains("H")){
+                t = 7;
+            }
+            for(i = t, n = 0; i < 64; i += 8, n++){
+                if(piecesInfo[i] == ""){
+                    if(blocked){
+                        blocked = false;
+                        break;
+                    }
+                    boardFields[i].sprite = circleBlack;
+                    piecesInfo[i] = "MoveOption" + alphabet[n];
+                    if(piecesInfo[i] == "MoveOptionE"){
+                        Debug.Log("a");
+                    }
+                }else if(!piecesInfo[i].Contains("rook_black")){
+                    if(i < clickedPos){
+                        for(j = i - 8; j > 0; j -= 8){
+                            if(piecesInfo[j].Contains("white") || piecesInfo[j].Contains("black")){
+                                continue;
+                            }else{
+                                boardFields[j].sprite = pieceImgWhite[11];
+                                piecesInfo[j] = "";
+                            }
+                        }
+                    }else if(i > clickedPos){
+                        for(j = i + 8; j < 64; j = j + 8){
+                            if(piecesInfo[j].Contains("white") || piecesInfo[j].Contains("black")){
+                                blocked = true;
+                                continue;
+                            }else{
+                                Debug.Log(j);
+                                boardFields[j].sprite = pieceImgWhite[11];
+                                piecesInfo[j] = "";
+                            }
+                        }
+                    }
+                }
+            }
+            blocked = false;
+            if(boardFieldsInfo[clickedPos].Contains("1")){
+                t = 0;
+            }else if(boardFieldsInfo[clickedPos].Contains("2")){
+                t = 8;
+            }else if(boardFieldsInfo[clickedPos].Contains("3")){
+                t = 16;
+            }else if(boardFieldsInfo[clickedPos].Contains("4")){
+                t = 24;
+            }else if(boardFieldsInfo[clickedPos].Contains("5")){
+                t = 32;
+            }else if(boardFieldsInfo[clickedPos].Contains("6")){
+                t = 40;
+            }else if(boardFieldsInfo[clickedPos].Contains("7")){
+                t = 48;
+            }else if(boardFieldsInfo[clickedPos].Contains("8")){
+                t = 56;
+            }
+            for(i = t, n = 8; i < t + 8; i++, n++){
+                if(piecesInfo[i] == ""){
+                    if(blocked){
+                        blocked = false;
+                        break;
+                    }
+                    boardFields[i].sprite = circleBlack;
+                    piecesInfo[i] = "MoveOption" + alphabet[n];
+                    if(piecesInfo[i] == "MoveOptionE"){
+                        Debug.Log("b");
+                    }
+                }else if(!piecesInfo[i].Contains("rook_black")){
+                    if(i < clickedPos){
+                        for(j = t; j < i; j++){
+                            if(piecesInfo[j].Contains("white") || piecesInfo[j].Contains("black")){
+                                blocked = true;
+                                break;
+                            }else{
+                                boardFields[j].sprite = pieceImgWhite[11];
+                                piecesInfo[j] = "";
+                            }
+                        }
+                    }else if(i > clickedPos){
+                        for(j = t + 7; j > clickedPos; j--){
+                            if(piecesInfo[j].Contains("white") || piecesInfo[j].Contains("black")){
+                                blocked = true;
+                                break;
+                            }else{                       
+                                boardFields[j].sprite = pieceImgWhite[11];
+                                piecesInfo[j] = "";
+                            }
+                        }
                     }
                 }
             }
